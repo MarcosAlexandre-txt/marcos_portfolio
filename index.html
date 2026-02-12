@@ -3,14 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcos Alexandre - Portfólio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Marcos Alexandre - Portfólio Acadêmico</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- CABEÇALHO -->
+    <div class="bg-animation"></div>
+
+    <!-- Header -->
     <header>
         <nav>
-            <div class="logo">&lt;MARCOS.ALEXANDRE/&gt;</div>
+            <div class="logo">
+                <span class="logo-bracket">&lt;</span>
+                MARCOS.ALEXANDRE
+                <span class="logo-bracket">/&gt;</span>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#inicio">INÍCIO</a></li>
                 <li><a href="#curriculo">CURRÍCULO</a></li>
@@ -22,64 +34,168 @@
         </nav>
     </header>
 
-    <!-- SEÇÃO INÍCIO -->
+    <!-- Hero Section -->
     <section id="inicio">
-        <p>Bem-vindo a documentação de</p>
-        <h1>Marcos Alexandre</h1>
-        <p class="subtitle">Desenvolvedor Full Stack | Entusiasta de Cybersegurança</p>
-        <p class="description">
-            Apaixonado por desvendar os mistérios da Programação, construir sistemas resilientes e explorar as 
-            fronteiras da segurança digital. Cada linha de código é uma oportunidade de interagir com demandas reais 
-            oferecendo soluções práticas. Competidor ativo em maratonas de programação, sempre buscando desafios 
-            que expandam meus limites técnicos e criativos.
-        </p>
-        <div class="cta-buttons">
-            <a href="assets/Curriculum Vitae - Marcos AlexandreI.pdf" download="MarcosAlexandre-CV.pdf" class="btn btn-primary">Download CV</a>
-            <a href="#projetos" class="btn btn-secondary">Ver Projetos</a>
+        <div class="hero-content">
+            <p class="greeting">Bem-vindo a documentação de</p>
+            <h1>Marcos Alexandre</h1>
+            <p class="subtitle">Desenvolvedor Full Stack | Entusiasta de Cybersegurança</p>
+            <p class="description">
+                Apaixonado por desvendar os mistérios da Programação, construir sistemas resilientes e explorar as 
+                fronteiras da segurança digital. Cada linha de código é uma oportunidade de interagir com demandas reais 
+                oferecendo soluções práticas. Competidor ativo em maratonas de programação, sempre buscando desafios 
+                que expandam meus limites técnicos e criativos.
+            </p>
+            <div class="cta-buttons">
+                <a href="assets/Curriculum Vitae - Marcos AlexandreI.pdf" download="MarcosAlexandre-CV.pdf" class="btn btn-primary">Download CV</a>
+                <a href="#projetos" class="btn btn-secondary">Ver Projetos</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="profile-container">
+                <div class="profile-img">
+                    <img src="assets/1foto.jpg" alt="Marcos Alexandre" class="profile-photo">
+                    <div class="profile-overlay"></div>
+                </div>
+                <div class="floating-icons">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="currentColor"/>
+                            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 9L15 15M15 9L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SEÇÃO CURRÍCULO -->
+    <!-- Currículo -->
     <section id="curriculo">
-        <h2>Formação & Competências</h2>
-        
-        <div class="grid">
-            <!-- Card 1: Formação -->
-            <div class="card">
-                <h3>Formação Acadêmica</h3>
-                <h4>Análise e Desenvolvimento de Sistemas</h4>
-                <p>FATEC São José dos Campos • 2025–2028</p>
-                <p class="texto-dim">
-                    Competidor ativo em maratonas de programação, aplicando conhecimentos em 
-                    algoritmos, estruturas de dados e resolução de problemas complexos.
-                </p>
-                <p class="texto-dim">
-                    Experiência com metodologias ágeis (Scrum) para gestão e 
-                    desenvolvimento de projetos, atuando de forma colaborativa e adaptativa.
-                </p>
+        <h2 data-text="SOBRE MIM">Formação & Competências</h2>
+        <div class="curriculo-grid">
+            <div class="curriculo-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 10V15C22 20 20 22 15 22H9C4 22 2 20 2 15V9C2 4 4 2 9 2H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 10H18C15 10 14 9 14 6V2L22 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Formação Acadêmica</h3>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-content">
+                        <h4>Análise e Desenvolvimento de Sistemas</h4>
+                        <p>FATEC São José dos Campos • 2025–2028</p>
+                        <p style="margin-top: 1rem; color: var(--text-dim);">
+                            Competidor ativo em maratonas de programação, aplicando conhecimentos em 
+                            algoritmos, estruturas de dados e resolução de problemas complexos.
+                        </p>
+                          <p style="margin-top: 1rem; color: var(--text-dim);">
+                        Experiência com <strong>metodologias ágeis (Scrum)</strong> para gestão e 
+                        desenvolvimento de projetos, atuando de forma colaborativa e adaptativa.
+                    </p>
+                    <p style="margin-top: 1rem; color: var(--text-dim);">
+                        Habilidade no uso do <strong>Git</strong> para versionamento de código
+                        em projetos de desenvolvimento de software.
+                    </p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Card 2: Soft Skills -->
-            <div class="card">
-                <h3>Soft Skills</h3>
-                <h4>Resolução de Problemas</h4>
-                <p>Abordagem analítica e estruturada para desafios complexos</p>
-                
-                <h4>Trabalho em Equipe</h4>
-                <p>Colaboração efetiva em metodologias ágeis e Scrum</p>
-                
-                <h4>Aprendizado Contínuo</h4>
-                <p>Autodidata e curiosidade constante por novas tecnologias</p>
-                
-                <h4>Comunicação</h4>
-                <p>Clareza técnica em documentação e apresentações de produtos</p>
+            <div class="curriculo-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Soft Skills</h3>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <div class="skill-content">
+                        <h4>Resolução de Problemas</h4>
+                        <p>Abordagem analítica e estruturada para desafios complexos</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <div class="skill-content">
+                        <h4>Trabalho em Equipe</h4>
+                        <p>Colaboração efetiva em metodologias ágeis e Scrum</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <div class="skill-content">
+                        <h4>Aprendizado Contínuo</h4>
+                        <p>Autodidata e curiosidade constante por novas tecnologias</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <div class="skill-content">
+                        <h4>Comunicação</h4>
+                        <p>Clareza técnica em documentação e apresentações de produtos</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Card 3: Stack Técnico -->
-            <div class="card">
-                <h3>Stack Técnico</h3>
-                <h4>Linguagens</h4>
-                <div>
+            <div class="curriculo-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Stack Técnico</h3>
+                </div>
+                <h4 style="color: var(--text); margin-bottom: 1rem;">Linguagens</h4>
+                <div class="tech-list">
                     <span class="tech-badge">Python</span>
                     <span class="tech-badge">C#</span>
                     <span class="tech-badge">JavaScript</span>
@@ -87,8 +203,8 @@
                     <span class="tech-badge">HTML/CSS</span>
                     <span class="tech-badge">Bash</span>
                 </div>
-                <h4>Frameworks & Tools</h4>
-                <div>
+                <h4 style="color: var(--text); margin: 1.5rem 0 1rem;">Frameworks & Tools</h4>
+                <div class="tech-list">
                     <span class="tech-badge">Flask</span>
                     <span class="tech-badge">Git</span>
                     <span class="tech-badge">Docker</span>
@@ -97,66 +213,136 @@
                 </div>
             </div>
 
-            <!-- Card 4: Áreas de Interesse -->
-            <div class="card">
-                <h3>Áreas de Interesse</h3>
-                
-                <h4>Cybersegurança</h4>
-                <p>Defesa de sistemas, análise de ameaças, segurança em redes e mitigação de vulnerabilidades.</p>
-                
-                <h4>Administração Linux</h4>
-                <p>Automação, shell scripting e otimização de servidores para desempenho e segurança.</p>
-                
-                <h4>Banco de Dados</h4>
-                <p>Modelagem, consultas SQL e administração de bancos relacionais e NoSQL.</p>
-                
-                <h4>Web Design</h4>
-                <p>Criação de interfaces responsivas, usabilidade e estilização com HTML, CSS e JavaScript.</p>
+            <div class="curriculo-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L4 6V12C4 16.5 7 20.5 12 22C17 20.5 20 16.5 20 12V6L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Áreas de Interesse</h3>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <div class="skill-content">
+                        <h4>Cybersegurança</h4>
+                        <p>Defesa de sistemas, análise de ameaças, segurança em redes e mitigação de vulnerabilidades.</p>                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 7H7.01M7 11H7.01M11 7H17M11 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <div class="skill-content">
+                        <h4>Administração Linux</h4>
+                        <p>Automação, shell scripting e otimização de servidores para desempenho e segurança.</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <ellipse cx="12" cy="5" rx="9" ry="3" stroke="currentColor" stroke-width="2"/>
+                           <path d="M3 5V19C3 20.1046 7.02944 21 12 21C16.9706 21 21 20.1046 21 19V5" 
+                           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    </span>
+                    <div class="skill-content">
+                      <h4>Banco de Dados</h4>
+                      <p>Modelagem, consultas SQL e administração de bancos relacionais e NoSQL.</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M3 10H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M7 16H7.01M11 16H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    </span>
+                    <div class="skill-content">
+                        <h4>Web Design</h4>
+                        <p>Criação de interfaces responsivas, usabilidade e estilização com HTML, CSS e JavaScript.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO PROJETOS -->
+    <!-- Projetos -->
     <section id="projetos">
-        <h2>Projetos em Destaque</h2>
-        
-        <div class="projeto-destaque">
-            <h3>Scrum Academy</h3>
-            <p>
-                Plataforma web educacional completa focada na disseminação da metodologia Scrum, 
-                desenvolvida com o objetivo de facilitar a compreensão e aplicação prática dos 
-                processos ágeis em times de desenvolvimento.
-            </p>
-            
-            <h4>Desafio</h4>
-            <p class="texto-dim">
-                Criar um sistema interativo que apresente conceitos complexos do Scrum de forma 
-                clara e didática, incluindo avaliações para mensurar o aprendizado.
-            </p>
-            
-            <h4>Solução</h4>
-            <p class="texto-dim">
-                Desenvolvimento de módulos educacionais com exemplos práticos, referências 
-                bibliográficas, sistema de avaliação e documentação técnica completa, 
-                permitindo replicabilidade dos processos.
-            </p>
-            
-            <div class="projeto-tags">
-                <span class="tech-badge">HTML/CSS</span>
-                <span class="tech-badge">JavaScript</span>
-                <span class="tech-badge">Scrum</span>
-                <span class="tech-badge">Metodologias Ágeis</span>
+        <h2 data-text="PORTFÓLIO">Projetos em Destaque</h2>
+        <div class="projeto-showcase">
+            <div class="projeto-image">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <div class="window-title">scrum_projectile.js</div>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-line"><span class="keyword">const</span> <span class="variable">scrum</span> = <span class="function">require</span>(<span class="string">'methodology'</span>);</div>
+                        <div class="code-line"><span class="keyword">const</span> <span class="variable">education</span> = <span class="keyword">new</span> <span class="function">Platform</span>();</div>
+                        <div class="code-line"></div>
+                        <div class="code-line"><span class="variable">education</span>.<span class="function">teach</span>(<span class="variable">scrum</span>);</div>
+                        <div class="code-line"><span class="variable">education</span>.<span class="function">evaluate</span>();</div>
+                        <div class="code-line"><span class="variable">education</span>.<span class="function">share</span>();</div>
+                    </div>
+                </div>
             </div>
-            
-            <a href="https://github.com/KaikeCaboclo/Scrum_Projectile" target="_blank" class="btn btn-primary">Ver no GitHub</a>
+            <div class="projeto-content">
+                <h3>Scrum Academy</h3>
+                <p class="projeto-description">
+                    Plataforma web educacional completa focada na disseminação da metodologia Scrum, 
+                    desenvolvida com o objetivo de facilitar a compreensão e aplicação prática dos 
+                    processos ágeis em times de desenvolvimento.
+                </p>
+                <div class="projeto-details">
+                    <h4>Desafio</h4>
+                    <p style="color: var(--text-dim); margin-bottom: 1rem;">
+                        Criar um sistema interativo que apresente conceitos complexos do Scrum de forma 
+                        clara e didática, incluindo avaliações para mensurar o aprendizado.
+                    </p>
+                    <h4>Solução</h4>
+                    <p style="color: var(--text-dim);">
+                        Desenvolvimento de módulos educacionais com exemplos práticos, referências 
+                        bibliográficas, sistema de avaliação e documentação técnica completa, 
+                        permitindo replicabilidade dos processos.
+                    </p>
+                </div>
+                <div class="projeto-tech">
+                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Scrum</span>
+                    <span class="tech-tag">Metodologias Ágeis</span>
+                </div>
+                <a href="https://github.com/KaikeCaboclo/Scrum_Projectile" target="_blank" class="btn btn-primary">Ver no GitHub</a>
+            </div>
         </div>
     </section>
 
-    <!-- SEÇÃO TRABALHOS -->
+    <!-- Trabalhos -->
     <section id="trabalhos">
-        <h2>Trabalhos & Publicações</h2>
-        
-        <div class="placeholder">
+        <h2 data-text="PESQUISA">Trabalhos & Publicações</h2>
+        <div class="placeholder-content">
+            <div class="placeholder-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
             <h3>Em Desenvolvimento</h3>
             <p>
                 Esta área está reservada para trabalhos acadêmicos, pesquisas em andamento e futuras 
@@ -165,61 +351,99 @@
         </div>
     </section>
 
-    <!-- SEÇÃO CERTIFICADOS -->
+    <!-- Certificados -->
     <section id="certificados">
-        <h2>Certificações</h2>
-        
-        <div class="grid">
-            <div class="card">
+        <h2 data-text="CONQUISTAS">Certificações</h2>
+        <div class="certificados-grid">
+            <div class="certificado-card">
+                <div class="certificado-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L4 6V12C4 16.5 7 20.5 12 22C17 20.5 20 16.5 20 12V6L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3>Google Cybersecurity Certificate</h3>
-                <p>Google • Coursera</p>
-                <p class="ano">2024</p>
+                <p class="certificado-org">Google • Coursera</p>
+                <p class="certificado-year">2024</p>
             </div>
-            
-            <div class="card">
+            <div class="certificado-card">
+                <div class="certificado-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
                 <h3>IT Essentials</h3>
-                <p>Cisco Networking Academy</p>
-                <p class="ano">2025</p>
+                <p class="certificado-org">Cisco Networking Academy</p>
+                <p class="certificado-year">2025</p>
             </div>
-            
-            <div class="card">
+            <div class="certificado-card">
+                <div class="certificado-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M7 7H7.01M7 11H7.01M11 7H17M11 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
                 <h3>Linux Essentials</h3>
-                <p>Cisco Networking Academy</p>
-                <p class="ano">2025</p>
+                <p class="certificado-org">Cisco Networking Academy</p>
+                <p class="certificado-year">2025</p>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO CONTATO -->
+    <!-- Contato -->
     <section id="contato">
-        <h2>Entre em Contato</h2>
-        
-        <div class="contato-intro">
-            <h3>Tem interesse em trabalhar comigo?</h3>
-            <p>Estou sempre aberto a novos projetos, colaborações e oportunidades de aprendizado.</p>
-        </div>
-
-        <div class="contato-grid">
-            <div class="contato-card">
-                <h4>LinkedIn</h4>
-                <a href="https://linkedin.com/in/marcos-alexandre-cs/" target="_blank">Marcos Alexandre</a>
-            </div>
-            
-            <div class="contato-card">
-                <h4>GitHub</h4>
-                <a href="https://github.com/MarcosAlexandre-txt" target="_blank">MarcosAlexandre-txt</a>
+        <h2 data-text="CONECTE-SE">Entre em Contato</h2>
+        <div class="contato-content">
+            <div class="contato-intro">
+                <h3>Tem interesse em trabalhar comigo?</h3>
+                <p>Estou sempre aberto a novos projetos, colaborações e oportunidades de aprendizado.</p>
             </div>
 
-            <div class="contato-card">
-                <h4>E-mail</h4>
-                <a href="mailto:marcos.alexandre.scrt@gmail.com">marcos.alexandre.scrt@gmail.com</a>
+            <div class="contato-grid">
+                <div class="contato-card">
+                    <div class="contato-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8C16 10.21 14.21 12 12 12C9.79 12 8 10.21 8 8C8 5.79 9.79 4 12 4C14.21 4 16 5.79 16 8ZM12 14C8.67 14 2 15.67 2 19V22H22V19C22 15.67 15.33 14 12 14Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h4>LinkedIn</h4>
+                    <a href="https://linkedin.com/in/marcos-alexandre-cs/" target="_blank" rel="noopener noreferrer">Marcos Alexandre</a>
+                </div>
+                
+                <div class="contato-card">
+                    <div class="contato-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h4>GitHub</h4>
+                    <a href="https://github.com/MarcosAlexandre-txt" target="_blank" rel="noopener noreferrer">MarcosAlexandre-txt</a>
+                </div>
+
+                <div class="contato-card" id="email-card">
+                    <div class="contato-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4>E-mail</h4>
+                    <a href="#" id="copy-email">Copiar Endereço</a>
+                    <p id="copy-feedback" style="display:none; color:var(--primary); font-size:0.9rem; margin-top:0.5rem;">E-mail copiado!</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- RODAPÉ -->
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Marcos Alexandre.</p>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

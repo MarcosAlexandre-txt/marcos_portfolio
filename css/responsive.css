@@ -1,0 +1,364 @@
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablets e telas médias */
+@media (max-width: 1024px) {
+    nav {
+        padding: 1.2rem 2rem;
+    }
+
+    section {
+        padding: 6rem 2rem;
+    }
+
+    #inicio {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .profile-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    .shield-icon {
+        width: 140px;
+        height: 140px;
+    }
+
+    .icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero-content .description {
+        font-size: 1.05rem;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Currículo */
+    .curriculo-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Projetos */
+    .projeto-showcase {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .projeto-image {
+        height: 400px;
+    }
+
+    .code-content {
+        font-size: 0.85rem;
+        padding: 1.5rem;
+    }
+
+    .projeto-content h3 {
+        font-size: 2rem;
+    }
+
+    /* Certificados */
+    .certificados-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    /* Contato */
+    .contato-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Smartphones */
+@media (max-width: 768px) {
+    /* Menu Mobile */
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        flex-direction: column;
+        background: var(--dark-2);
+        width: 100%;
+        padding: 2rem;
+        gap: 1.5rem;
+        transition: 0.3s;
+        border-top: 1px solid rgba(0, 255, 136, 0.1);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    nav {
+        padding: 1rem 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    /* Seções */
+    section {
+        padding: 5rem 1.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    h2::before {
+        font-size: 0.85rem;
+        top: -12px;
+    }
+
+    /* Hero */
+    .profile-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .shield-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .hero-content .greeting {
+        font-size: 1.1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-content .description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Currículo */
+    .curriculo-card {
+        padding: 2rem;
+    }
+
+    .curriculo-card h3 {
+        font-size: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .curriculo-card .card-icon {
+        font-size: 2rem;
+    }
+
+    .skill-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 0;
+    }
+
+    .skill-icon {
+        margin: 0 0 0.5rem 0;
+        font-size: 2rem;
+    }
+
+    .tech-list {
+        justify-content: center;
+    }
+
+    /* Projetos */
+    .projeto-image {
+        height: 300px;
+        padding: 1.5rem;
+    }
+
+    .code-content {
+        font-size: 0.75rem;
+        padding: 1rem;
+        line-height: 1.8;
+    }
+
+    .window-header {
+        padding: 0.8rem 1rem;
+    }
+
+    .window-buttons span {
+        width: 10px;
+        height: 10px;
+    }
+
+    .projeto-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .projeto-description {
+        font-size: 1rem;
+    }
+
+    .projeto-details {
+        padding: 1.5rem;
+    }
+
+    .projeto-details h4 {
+        font-size: 1.1rem;
+    }
+
+    .projeto-tech {
+        justify-content: center;
+    }
+
+    /* Placeholder */
+    .placeholder-content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .placeholder-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .placeholder-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .placeholder-content p {
+        font-size: 1rem;
+    }
+
+    /* Certificados */
+    .certificados-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificado-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .certificado-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .certificado-card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Contato */
+    .contato-intro h3 {
+        font-size: 1.5rem;
+    }
+
+    .contato-intro p {
+        font-size: 1rem;
+    }
+
+    .contato-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .contato-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .contato-card h4 {
+        font-size: 1.2rem;
+    }
+
+    .contato-card a {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .profile-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .shield-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .projeto-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .code-content {
+        font-size: 0.7rem;
+        padding: 0.8rem;
+    }
+
+    .curriculo-card,
+    .certificado-card,
+    .contato-card {
+        padding: 2rem 1.5rem;
+    }
+}
