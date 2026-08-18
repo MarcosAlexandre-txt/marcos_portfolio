@@ -69,13 +69,16 @@
         gap: 3rem;
     }
 
-    .projeto-image {
-        height: 400px;
+    .projeto-showcase + .projeto-showcase {
+        margin-top: 4rem;
     }
 
-    .code-content {
-        font-size: 0.85rem;
-        padding: 1.5rem;
+    .projeto-showcase-reverse .projeto-image {
+        order: 0;
+    }
+
+    .projeto-image {
+        height: 400px;
     }
 
     .projeto-content h3 {
@@ -124,7 +127,9 @@
     }
 
     .logo {
-        font-size: 1.3rem;
+        font-size: 1.05rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
     }
 
     /* Seções */
@@ -223,21 +228,6 @@
         padding: 1.5rem;
     }
 
-    .code-content {
-        font-size: 0.75rem;
-        padding: 1rem;
-        line-height: 1.8;
-    }
-
-    .window-header {
-        padding: 0.8rem 1rem;
-    }
-
-    .window-buttons span {
-        width: 10px;
-        height: 10px;
-    }
-
     .projeto-content h3 {
         font-size: 1.8rem;
     }
@@ -256,24 +246,6 @@
 
     .projeto-tech {
         justify-content: center;
-    }
-
-    /* Placeholder */
-    .placeholder-content {
-        padding: 2.5rem 1.5rem;
-    }
-
-    .placeholder-icon {
-        width: 60px;
-        height: 60px;
-    }
-
-    .placeholder-content h3 {
-        font-size: 1.5rem;
-    }
-
-    .placeholder-content p {
-        font-size: 1rem;
     }
 
     /* Certificados */
@@ -320,6 +292,10 @@
         font-size: 0.9rem;
     }
 
+    .copy-email-button {
+        width: 100%;
+    }
+
     /* Footer */
     footer {
         padding: 2rem 1.5rem;
@@ -349,11 +325,6 @@
 
     .projeto-content h3 {
         font-size: 1.5rem;
-    }
-
-    .code-content {
-        font-size: 0.7rem;
-        padding: 0.8rem;
     }
 
     .curriculo-card,

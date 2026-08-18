@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcos Alexandre - Portfólio Acadêmico</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <title>Marcos Alexandre | Portfólio de Desenvolvimento de Software</title>
+    <meta name="description" content="Portfólio de Marcos Alexandre, estudante de Desenvolvimento de Software na FATEC São José dos Campos, com projetos em desenvolvimento web, Java, SQL e segurança da informação.">
+    <meta name="theme-color" content="#0a0e27">
+    <meta property="og:title" content="Marcos Alexandre | Portfólio de Desenvolvimento de Software">
+    <meta property="og:description" content="Projetos acadêmicos, competências técnicas e certificações de Marcos Alexandre.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/1foto.jpg">
+    <link rel="stylesheet" href="css/styles.css?v=2026.08.1">
+    <link rel="stylesheet" href="css/responsive.css?v=2026.08.1">
 </head>
 <body>
     <div class="bg-animation"></div>
@@ -18,36 +24,35 @@
                 MARCOS.ALEXANDRE
                 <span class="logo-bracket">/&gt;</span>
             </div>
-            <div class="menu-toggle" onclick="toggleMenu()">
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-menu" onclick="toggleMenu(this)">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            <ul class="nav-links">
+            </button>
+            <ul class="nav-links" id="site-menu">
                 <li><a href="#inicio">INÍCIO</a></li>
                 <li><a href="#curriculo">CURRÍCULO</a></li>
                 <li><a href="#projetos">PROJETOS</a></li>
-                <li><a href="#trabalhos">PESQUISAS</a></li>
                 <li><a href="#certificados">CERTIFICADOS</a></li>
                 <li><a href="#contato">CONTATO</a></li>
             </ul>
         </nav>
     </header>
 
+    <main>
     <!-- Hero Section -->
     <section id="inicio">
         <div class="hero-content">
-            <p class="greeting">Bem-vindo a documentação de</p>
+            <p class="greeting">Estudante de Desenvolvimento de Software</p>
             <h1>Marcos Alexandre</h1>
-            <p class="subtitle">Desenvolvedor Full Stack | Entusiasta de Cybersegurança</p>
+            <p class="subtitle">Python, Java, C#, TypeScript e SQL</p>
             <p class="description">
-                Apaixonado por desvendar os mistérios da Programação, construir sistemas resilientes e explorar as 
-                fronteiras da segurança digital. Cada linha de código é uma oportunidade de interagir com demandas reais 
-                oferecendo soluções práticas. Competidor ativo em maratonas de programação, sempre buscando desafios 
-                que expandam meus limites técnicos e criativos.
+                Estudante de Desenvolvimento de Software na FATEC São José dos Campos, com interesse em desenvolvimento
+                de sistemas, análise de dados e segurança da informação. Desenvolvo projetos acadêmicos e busco transformar
+                requisitos em soluções práticas, documentadas e colaborativas.
             </p>
             <div class="cta-buttons">
-                <a href="assets/Curriculum Vitae - Marcos Alexandre.pdf" download="MarcosAlexandre-CV.pdf" class="btn btn-primary">Download CV</a>
+                <a href="assets/Marcos_Alexandre_Bernardo_CV_Estagio.pdf" download="Marcos_Alexandre_Bernardo_CV_Estagio.pdf" class="btn btn-primary">Download CV</a>
                 <a href="#projetos" class="btn btn-secondary">Ver Projetos</a>
             </div>
         </div>
@@ -104,19 +109,17 @@
                 </div>
                 <div class="skill-item">
                     <div class="skill-content">
-                        <h4>Análise e Desenvolvimento de Sistemas</h4>
-                        <p>FATEC São José dos Campos • 2025–2028</p>
+                        <h4>Tecnólogo em Desenvolvimento de Software Multiplataforma</h4>
+                        <p>FATEC São José dos Campos • Agosto de 2025 - Dezembro de 2028</p>
                         <p style="margin-top: 1rem; color: var(--text-dim);">
-                            Competidor ativo em maratonas de programação, aplicando conhecimentos em 
-                            algoritmos, estruturas de dados e resolução de problemas complexos.
+                            Curso com ênfase em desenvolvimento de software, bancos de dados, redes, gestão e segurança
+                            da informação.
                         </p>
-                          <p style="margin-top: 1rem; color: var(--text-dim);">
-                        Experiência com <strong>metodologias ágeis (Scrum)</strong> para gestão e 
-                        desenvolvimento de projetos, atuando de forma colaborativa e adaptativa.
+                        <p style="margin-top: 1rem; color: var(--text-dim);">
+                            Estudos e projetos com <strong>Python, Java, C#, TypeScript, SQL, Linux, automação e CI/CD</strong>.
                     </p>
                     <p style="margin-top: 1rem; color: var(--text-dim);">
-                        Habilidade no uso do <strong>Git</strong> para versionamento de código
-                        em projetos de desenvolvimento de software.
+                        Prática de <strong>Scrum</strong> e uso de <strong>Git</strong> em projetos acadêmicos de software.
                     </p>
                     </div>
                 </div>
@@ -197,19 +200,22 @@
                 <h4 style="color: var(--text); margin-bottom: 1rem;">Linguagens</h4>
                 <div class="tech-list">
                     <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Java</span>
                     <span class="tech-badge">C#</span>
+                    <span class="tech-badge">TypeScript</span>
                     <span class="tech-badge">JavaScript</span>
                     <span class="tech-badge">SQL</span>
                     <span class="tech-badge">HTML/CSS</span>
-                    <span class="tech-badge">Bash</span>
                 </div>
-                <h4 style="color: var(--text); margin: 1.5rem 0 1rem;">Frameworks & Tools</h4>
+                <h4 style="color: var(--text); margin: 1.5rem 0 1rem;">Ferramentas e ambiente</h4>
                 <div class="tech-list">
-                    <span class="tech-badge">Flask</span>
                     <span class="tech-badge">Git</span>
-                    <span class="tech-badge">Docker</span>
                     <span class="tech-badge">MySQL</span>
                     <span class="tech-badge">Linux</span>
+                    <span class="tech-badge">CI/CD</span>
+                    <span class="tech-badge">Flask</span>
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">Power BI</span>
                 </div>
             </div>
 
@@ -230,8 +236,8 @@
                         </svg>
                     </span>
                     <div class="skill-content">
-                        <h4>Cybersegurança</h4>
-                        <p>Defesa de sistemas, análise de ameaças, segurança em redes e mitigação de vulnerabilidades.</p>                    </div>
+                        <h4>Segurança da Informação</h4>
+                        <p>Fundamentos de GRC, gestão de riscos, IAM, DLP, redes e resposta a incidentes.</p>                    </div>
                 </div>
                 <div class="skill-item">
                     <span class="skill-icon">
@@ -243,8 +249,8 @@
                         </svg>
                     </span>
                     <div class="skill-content">
-                        <h4>Administração Linux</h4>
-                        <p>Automação, shell scripting e otimização de servidores para desempenho e segurança.</p>
+                        <h4>Linux e Automação</h4>
+                        <p>Fundamentos de administração Linux, shell scripting, automação e CI/CD.</p>
                     </div>
                 </div>
                 <div class="skill-item">
@@ -256,8 +262,8 @@
                     </svg>
                     </span>
                     <div class="skill-content">
-                      <h4>Banco de Dados</h4>
-                      <p>Modelagem, consultas SQL e administração de bancos relacionais e NoSQL.</p>
+                        <h4>Banco de Dados</h4>
+                      <p>SQL, MySQL, bancos relacionais e organização de informações para processos de negócio.</p>
                     </div>
                 </div>
                 <div class="skill-item">
@@ -269,8 +275,8 @@
                     </svg>
                     </span>
                     <div class="skill-content">
-                        <h4>Web Design</h4>
-                        <p>Criação de interfaces responsivas, usabilidade e estilização com HTML, CSS e JavaScript.</p>
+                        <h4>Análise de Dados</h4>
+                        <p>Interesse em Python, SQL e interpretação de dados para apoiar decisões e melhorar processos.</p>
                     </div>
                 </div>
             </div>
@@ -281,73 +287,67 @@
     <section id="projetos">
         <h2 data-text="PORTFÓLIO">Projetos em Destaque</h2>
         <div class="projeto-showcase">
-            <div class="projeto-image">
-                <div class="code-window">
-                    <div class="window-header">
-                        <div class="window-buttons">
-                            <span class="btn-close"></span>
-                            <span class="btn-minimize"></span>
-                            <span class="btn-maximize"></span>
-                        </div>
-                        <div class="window-title">scrum_projectile.js</div>
-                    </div>
-                    <div class="code-content">
-                        <div class="code-line"><span class="keyword">const</span> <span class="variable">scrum</span> = <span class="function">require</span>(<span class="string">'methodology'</span>);</div>
-                        <div class="code-line"><span class="keyword">const</span> <span class="variable">education</span> = <span class="keyword">new</span> <span class="function">Platform</span>();</div>
-                        <div class="code-line"></div>
-                        <div class="code-line"><span class="variable">education</span>.<span class="function">teach</span>(<span class="variable">scrum</span>);</div>
-                        <div class="code-line"><span class="variable">education</span>.<span class="function">evaluate</span>();</div>
-                        <div class="code-line"><span class="variable">education</span>.<span class="function">share</span>();</div>
-                    </div>
+            <div class="projeto-image projeto-cover projeto-cover--scrum" role="img" aria-label="Identidade visual do projeto Scrum Academy">
+                <div class="project-cover-content">
+                    <span class="project-kicker">PROJETO ACADÊMICO</span>
+                    <strong>Scrum<br>Academy</strong>
+                    <span class="project-cover-rule"></span>
+                    <small>Educação • Web</small>
                 </div>
             </div>
             <div class="projeto-content">
                 <h3>Scrum Academy</h3>
                 <p class="projeto-description">
-                    Plataforma web educacional completa focada na disseminação da metodologia Scrum, 
-                    desenvolvida com o objetivo de facilitar a compreensão e aplicação prática dos 
-                    processos ágeis em times de desenvolvimento.
+                    Plataforma web educacional criada para disseminar o framework Scrum e apoiar o aprendizado
+                    de práticas ágeis em equipes de desenvolvimento.
                 </p>
                 <div class="projeto-details">
-                    <h4>Desafio</h4>
+                    <h4>O que foi desenvolvido</h4>
                     <p style="color: var(--text-dim); margin-bottom: 1rem;">
-                        Criar um sistema interativo que apresente conceitos complexos do Scrum de forma 
-                        clara e didática, incluindo avaliações para mensurar o aprendizado.
-                    </p>
-                    <h4>Solução</h4>
-                    <p style="color: var(--text-dim);">
-                        Desenvolvimento de módulos educacionais com exemplos práticos, referências 
-                        bibliográficas, sistema de avaliação e documentação técnica completa, 
-                        permitindo replicabilidade dos processos.
+                        Conteúdos educacionais, exemplos práticos, referências e sistema de avaliação para tornar
+                        conceitos do Scrum mais claros e aplicáveis.
                     </p>
                 </div>
                 <div class="projeto-tech">
                     <span class="tech-tag">HTML/CSS</span>
                     <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Scrum</span>
-                    <span class="tech-tag">Metodologias Ágeis</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
                 </div>
-                <a href="https://github.com/KaikeCaboclo/Scrum_Projectile" target="_blank" class="btn btn-primary">Ver no GitHub</a>
+                <a href="https://github.com/KaikeCaboclo/Scrum_Projectile" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver no GitHub</a>
             </div>
         </div>
-    </section>
 
-    <!-- Trabalhos -->
-    <section id="trabalhos">
-        <h2 data-text="PESQUISA">Trabalhos & Publicações</h2>
-        <div class="placeholder-content">
-            <div class="placeholder-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+        <div class="projeto-showcase projeto-showcase-reverse">
+            <div class="projeto-image projeto-cover projeto-cover--we-logic" role="img" aria-label="Identidade visual do projeto We Logic">
+                <div class="project-cover-content">
+                    <span class="project-kicker">PROJETO ACADÊMICO</span>
+                    <strong>We<br>Logic</strong>
+                    <span class="project-cover-rule"></span>
+                    <small>Compras • Estoque • Dados</small>
+                </div>
             </div>
-            <h3>Em Desenvolvimento</h3>
-            <p>
-                Esta área está reservada para trabalhos acadêmicos, pesquisas em andamento e futuras 
-                publicações nas áreas de cybersegurança, desenvolvimento de sistemas e artigos técnicos.
-            </p>
+            <div class="projeto-content">
+                <h3>We Logic</h3>
+                <p class="projeto-description">
+                    Aplicação desktop desenvolvida em Java e JavaFX para apoiar a gestão completa do processo de compras
+                    e logística da empresa Newe Log.
+                </p>
+                <div class="projeto-details">
+                    <h4>Funcionalidades</h4>
+                    <p style="color: var(--text-dim);">
+                        Pedidos de compra, fluxo de aprovação, controle de estoque, cotações com comparação de fornecedores,
+                        registro de recebimento e dashboard com indicadores financeiros e operacionais.
+                    </p>
+                </div>
+                <div class="projeto-tech">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">JavaFX</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">Spring Boot</span>
+                </div>
+                <a href="https://github.com/FawkesCode/API-2026.01" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver no GitHub</a>
+            </div>
         </div>
     </section>
 
@@ -400,7 +400,7 @@
         <div class="contato-content">
             <div class="contato-intro">
                 <h3>Tem interesse em trabalhar comigo?</h3>
-                <p>Estou sempre aberto a novos projetos, colaborações e oportunidades de aprendizado.</p>
+                <p>Estou aberto a novos projetos, colaborações e oportunidades de aprendizado!</p>
             </div>
 
             <div class="contato-grid">
@@ -432,18 +432,21 @@
                         </svg>
                     </div>
                     <h4>E-mail</h4>
-                    <a href="#" id="copy-email">Copiar Endereço</a>
-                    <p id="copy-feedback" style="display:none; color:var(--primary); font-size:0.9rem; margin-top:0.5rem;">E-mail copiado!</p>
+                    <a href="mailto:marcos.alexandre.scrt@gmail.com">marcos.alexandre.scrt@gmail.com</a>
+                    <button type="button" id="copy-email" class="copy-email-button">Copiar e-mail</button>
+                    <p id="copy-feedback" aria-live="polite" style="display:none; color:var(--primary); font-size:0.9rem; margin-top:0.5rem;">E-mail copiado!</p>
                 </div>
             </div>
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Marcos Alexandre.</p>
+        <p>&copy; 2026 Marcos Alexandre.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=2026.08.1"></script>
 </body>
 </html>

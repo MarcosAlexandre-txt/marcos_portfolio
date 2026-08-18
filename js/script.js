@@ -2,40 +2,55 @@
 // MENU MOBILE TOGGLE
 // ========================================
 
-function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
+const prefersReducedMotion = window.matchMedia
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    : false;
+
+function toggleMenu(button) {
+    const navLinks = document.getElementById('site-menu');
+    const isOpen = navLinks.classList.toggle('active');
+    button.setAttribute('aria-expanded', String(isOpen));
+    button.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+}
+
+function closeMenu() {
+    const navLinks = document.getElementById('site-menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    navLinks.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Abrir menu');
 }
 
 // Fechar menu ao clicar em um link
 document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('active');
-    });
+    link.addEventListener('click', closeMenu);
 });
 
 // ========================================
 // ANIMAÇÃO AO SCROLL
 // ========================================
 
-const observer = new IntersectionObserver((entries) => {
+const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, { 
+}, {
     threshold: 0.1 
-});
+}) : null;
 
-// Aplicar animação a todas as seções
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'all 0.8s ease';
-    observer.observe(section);
-});
+// Aplicar animação a todas as seções somente quando o usuário permitir movimento.
+if (!prefersReducedMotion && observer) {
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 0.8s ease';
+        observer.observe(section);
+    });
+}
 
 // ========================================
 // HIGHLIGHT MENU ATIVO NO SCROLL
@@ -49,7 +64,6 @@ window.addEventListener('scroll', () => {
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         
         if (scrollY >= sectionTop - 200) {
             current = section.getAttribute('id');
@@ -88,7 +102,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ANIMAÇÃO DE ENTRADA DOS CARDS
 // ========================================
 
-const cardObserver = new IntersectionObserver((entries) => {
+const cardObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
             setTimeout(() => {
@@ -97,33 +111,35 @@ const cardObserver = new IntersectionObserver((entries) => {
             }, index * 100);
         }
     });
-}, { 
+}, {
     threshold: 0.1 
-});
+}) : null;
 
-// Animar cards de currículo
-document.querySelectorAll('.curriculo-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'all 0.6s ease';
-    cardObserver.observe(card);
-});
+if (!prefersReducedMotion && cardObserver) {
+    // Animar cards de currículo
+    document.querySelectorAll('.curriculo-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 0.6s ease';
+        cardObserver.observe(card);
+    });
 
-// Animar cards de certificados
-document.querySelectorAll('.certificado-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'scale(0.9)';
-    card.style.transition = 'all 0.6s ease';
-    cardObserver.observe(card);
-});
+    // Animar cards de certificados
+    document.querySelectorAll('.certificado-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.9)';
+        card.style.transition = 'all 0.6s ease';
+        cardObserver.observe(card);
+    });
 
-// Animar cards de contato
-document.querySelectorAll('.contato-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateX(-20px)';
-    card.style.transition = 'all 0.6s ease';
-    cardObserver.observe(card);
-});
+    // Animar cards de contato
+    document.querySelectorAll('.contato-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(-20px)';
+        card.style.transition = 'all 0.6s ease';
+        cardObserver.observe(card);
+    });
+}
 
 // ========================================
 // EFEITO DE PARALLAX NO BACKGROUND
@@ -133,8 +149,10 @@ window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     
     // Efeito sutil de parallax no scroll
-    document.querySelector('.bg-animation').style.transform = 
-        `translateY(${scrolled * 0.3}px)`;
+    const background = document.querySelector('.bg-animation');
+    if (background && !prefersReducedMotion) {
+        background.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
 });
 
 // ========================================
@@ -145,18 +163,20 @@ window.addEventListener('load', () => {
     // Adicionar classe loaded ao body para animações iniciais
     document.body.classList.add('loaded');
     
-    // Animar elementos do hero
-    const heroElements = document.querySelectorAll('.hero-content > *');
-    heroElements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            element.style.transition = 'all 0.8s ease';
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }, index * 150);
-    });
+    if (!prefersReducedMotion) {
+        // Animar elementos do hero
+        const heroElements = document.querySelectorAll('.hero-content > *');
+        heroElements.forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                element.style.transition = 'all 0.8s ease';
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, index * 150);
+        });
+    }
 });
 
 // ========================================
@@ -222,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         emailButton.textContent = 'Copiado!';
                         setTimeout(() => {
                             emailFeedback.style.display = 'none';
-                            emailButton.textContent = 'Copiar Endereço';
+                            emailButton.textContent = 'Copiar e-mail';
                         }, 2000);
                     })
                     .catch((err) => {
@@ -252,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
             emailButton.textContent = 'Copiado!';
             setTimeout(() => {
                 emailFeedback.style.display = 'none';
-                emailButton.textContent = 'Copiar Endereço';
+                emailButton.textContent = 'Copiar e-mail';
             }, 2000);
         } catch (err) {
             alert('Não foi possível copiar. E-mail: ' + emailAddress);
