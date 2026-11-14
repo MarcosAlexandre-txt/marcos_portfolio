@@ -1,0 +1,144 @@
+/* The illustrations are environments, not photographs. Only the real portrait keeps a frame. */
+.scene-environment{position:absolute;z-index:0;inset:0;margin:0;aspect-ratio:auto;filter:none;pointer-events:none;transform:none}
+.scene-environment::before{display:none}
+.scene-environment img,.scene-environment canvas{inset:0;width:100%;height:100%;clip-path:none;object-fit:cover}
+.view-sobre,.view-formacao{background:#031638}
+.view-sobre .view-word,.view-formacao .view-word,.view-sobre .view-body,.view-formacao .view-body{z-index:2}
+.view-sobre::after{content:'';position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,#020d2cf2 0%,#031536d9 27%,#03153680 44%,transparent 65%),linear-gradient(0deg,#020e2cf5 0%,#020e2ce6 17%,transparent 56%)}
+.view-sobre .view-word{position:relative;inset:auto;margin:clamp(10px,2vh,26px) 0 24px;transform:none;font-size:clamp(76px,9vw,144px);line-height:.95;color:#fff}
+.view-sobre .view-body{padding:0}
+.train-environment{height:100%;min-height:100svh}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:'copy air' 'portrait ficha';gap:clamp(50px,9vh,100px) clamp(40px,7vw,120px);max-width:1500px;min-height:calc(100svh - 270px);align-items:end}
+.about-copy{align-self:start;max-width:49ch}
+.about-copy .bar{width:fit-content;max-width:100%;margin-right:0;padding:.4em .8em;font-size:clamp(1.2rem,1.7vw,1.8rem)}
+.about-copy .lead{max-width:23ch;margin:1.5rem 0;font-size:clamp(1.7rem,2.65vw,2.7rem);font-weight:800;line-height:1.12}
+.about-copy p:not(.lead){max-width:46ch;color:#e0f1ff}
+.about-portrait{justify-self:start;display:flex;align-items:center;gap:24px;width:100%;margin:0}
+.about-portrait .tile{width:110px;flex:0 0 110px}
+.about-portrait figcaption{max-width:14ch;margin:0;font-size:.95rem;transform:none;color:#d9f3ff}
+.about .ficha{margin:0;font-size:.95rem}
+.about .ficha>div{grid-template-columns:115px 1fr;gap:20px;padding:.8rem 0}
+.about .ficha dt{font-size:.72rem}
+.about .ficha .chips li{font-size:.8rem;background:#07357e}
+.about .now-playing{left:57%;top:48%;transform:rotate(-6deg);font-size:.85rem}
+.about .now-playing::after{display:none}
+
+/* Moonlight merges the artwork into the reading plane, with no edge, mat or red photo frame. */
+.classroom-environment{left:36%;width:64%;height:100%;mask-image:linear-gradient(90deg,transparent,#000 25%),linear-gradient(#000 78%,transparent);mask-composite:intersect}
+.classroom-environment img{object-position:50% 25%}
+.view-formacao::after{content:'';position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,#031638 0%,#031638ed 29%,#031638c9 43%,#03163833 64%,transparent 85%),linear-gradient(0deg,#031638 0%,transparent 35%)}
+.view-formacao .view-word{position:relative;inset:auto;transform:none;margin:14px 0 40px;font-size:clamp(72px,9vw,144px);line-height:.95;color:#fff}
+.view-formacao .view-body{padding:0}
+.edu{display:block;max-width:1500px;min-height:calc(100svh - 260px)}
+.edu-main{width:57%;max-width:830px}
+.course-kind{color:#a6e6ff}
+.course .bar{font-size:clamp(1.6rem,2.8vw,2.8rem);padding:.4em .8em}
+.course-school{max-width:40ch!important;color:#d9f1ff}
+.course{margin-bottom:64px}
+.certs>li{grid-template-columns:120px 1fr;gap:24px;padding:1.5rem 0}
+.cert-year{font-size:58px;text-shadow:none;color:#83dfff}
+.certs .chips li{background:#07357e}
+
+/* Skills: a dominant fan of tangible Arcana, backed by a complete HTML catalog. */
+.view-skills{background:radial-gradient(ellipse at 30% 38%,#0c45a8 0%,#06216b 48%,#020b36 100%);min-height:100svh;padding-bottom:36px}
+.view-skills::before{content:'';position:absolute;z-index:-1;width:65vw;height:65vw;border:1px solid #71dfff1f;border-radius:50%;left:-10vw;top:4vh;pointer-events:none}
+.view-skills .view-word{position:relative;inset:auto;margin:4px 0 12px;transform:none;font-size:clamp(76px,8vw,128px);line-height:1;color:#fff}
+.view-skills .view-body{padding:0;animation:none}
+.arcana-toolbar{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.arcana-toolbar p{margin:0;color:#cae7ff;font-size:.9rem;font-style:italic}
+.arcana-filters{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.arcana-filters button{position:relative;isolation:isolate;background:transparent;color:#a7ddff;padding:10px 22px;border:0;min-height:48px;font:900 italic clamp(1rem,1.6vw,1.5rem)/1.2 'Archivo Variable',sans-serif;text-transform:uppercase;cursor:pointer}
+.arcana-filters button::before{content:'';position:absolute;inset:0;z-index:-1;transform:skewX(-12deg);background:#082661;border:1px solid #5987c5}
+.arcana-filters button[aria-pressed=true]{color:#06153e}
+.arcana-filters button[aria-pressed=true]::before{background:#fff;border-color:#fff}
+.arcana-filters span{margin-left:8px;font-size:.65em;font-style:normal;opacity:.8}
+.arcana-experience{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,1fr);align-items:center;gap:clamp(24px,4vw,70px);min-height:450px}
+.arcana-stage{position:relative;min-width:0;height:clamp(410px,53vh,650px);touch-action:pan-y}
+.arcana-webgl{position:absolute;inset:-24px -4% 30px;touch-action:pan-y}
+.arcana-webgl canvas{display:block;width:100%;height:100%}
+.arcana-fallback{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%) rotate(-5deg);width:200px;aspect-ratio:72/103}
+.arcana-fallback img{display:block;width:100%;height:auto}
+.webgl-ready .arcana-fallback{display:none}
+.deck-controls{position:absolute;bottom:0;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap}
+.deck-controls button{display:grid;place-items:center;background:#05183e;border:1px solid #83dfff;color:#fff;width:48px;height:48px;cursor:pointer;transition:background .2s}
+.deck-controls button:hover{background:#2357a6}
+.deck-controls svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2}
+.deck-controls span{min-width:70px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;color:#d5efff}
+.arcana-details{padding:20px 0 30px;min-width:0}
+.arcana-detail + .arcana-detail{margin-top:30px}
+.enhanced-deck .arcana-detail{margin:0}
+.arcana-detail h3{margin:0 0 12px;font:900 italic clamp(2.3rem,4vw,4.3rem)/.95 'Archivo Variable',sans-serif;font-stretch:84%;letter-spacing:-.03em;text-transform:uppercase;overflow-wrap:anywhere;color:#fff}
+.arcana-description{max-width:36ch;font-size:1.05rem;color:#e3f2ff}
+.arcana-evidence{list-style:none;margin:0 0 20px;padding:0}
+.arcana-evidence li{position:relative;padding:8px 0 8px 22px;border-bottom:1px solid #83dfff33;color:#fff;font-weight:600}
+.arcana-evidence li::before{content:'';position:absolute;left:2px;top:18px;width:6px;height:6px;background:#83dfff;transform:rotate(45deg)}
+.arcana-level{font-size:.8rem;color:#c4d8ef;font-style:italic;margin:24px 0 10px}
+.arcana-detail .go{font-size:1rem}
+.arcana-catalog{display:flex;flex-wrap:wrap;gap:6px 8px;padding-top:16px;border-top:1px solid #83dfff40}
+.arcana-catalog button{display:flex;align-items:center;gap:9px;min-height:44px;padding:7px 13px;border:1px solid transparent;background:#04163d;color:#c9e5ff;font:600 .86rem/1.2 'Archivo Variable',sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.arcana-catalog button:hover{background:#174d9f;color:#fff}
+.arcana-catalog button[aria-pressed=true]{background:#fff;color:#06153e}
+.deck-hint{margin:14px 0 0!important;font-size:.78rem;color:#b1d6fa}
+.deck-hint kbd{display:inline-block;width:auto;height:auto;border:0;margin:0 2px;font:inherit}
+.arcana-menu button:focus-visible{outline:3px solid #ffb5db;outline-offset:4px}
+
+@media(min-width:1800px){.about{margin-inline:auto}.view-sobre .view-word,.view-formacao .view-word{font-size:144px}}
+@media(max-width:1100px) and (min-width:701px){
+  .section-view{--pad:32px}
+  .about{grid-template-columns:1fr 1fr;column-gap:32px}
+  .about-copy .lead{font-size:2rem}.about-copy p{font-size:.95rem}
+  .about .ficha>div{grid-template-columns:1fr;gap:4px}
+  .about .now-playing{left:61%;top:38%}
+  .edu-main{width:63%}
+  .arcana-experience{grid-template-columns:minmax(0,1.45fr) minmax(240px,1fr);gap:20px}
+  .arcana-toolbar p{max-width:24ch}
+}
+@media(max-width:700px){
+  .view-sobre,.view-formacao,.view-skills{--pad:24px}
+  .view-bar{padding:8px 24px 20px;gap:0;font-size:.73rem}
+  .view-bar ul{gap:0 2px}.view-bar a{padding:0 .5em}
+  .view-sobre .view-word,.view-formacao .view-word,.view-skills .view-word{font-size:clamp(64px,18vw,110px);margin:4px 0 24px;overflow-wrap:normal}
+  .view-sobre .view-word{margin-bottom:210px}
+  .train-environment{height:650px;min-height:0;inset:95px 0 auto}
+  .train-environment img{object-position:62% 50%}
+  .view-sobre::after{background:linear-gradient(0deg,#031638 0%,#031638 35%,#031638eb 51%,transparent 76%),linear-gradient(180deg,#031638 0%,transparent 26%)}
+  .about{display:flex;flex-direction:column;align-items:stretch;gap:38px;min-height:0}
+  .about-copy{max-width:none}.about-copy .bar{font-size:1.28rem}.about-copy .lead{font-size:1.95rem;max-width:25ch}
+  .about-copy p:not(.lead){max-width:none}
+  .about .now-playing{position:absolute;left:auto;right:0;top:-85px;bottom:auto;font-size:.72rem;transform:rotate(-5deg);padding-inline:16px}
+  .about-portrait{max-width:none;gap:26px}.about-portrait .tile{width:92px;flex-basis:92px}
+  .about .ficha>div{grid-template-columns:1fr;gap:6px}
+  .classroom-environment{inset:100px 0 auto;width:100%;height:700px;mask-image:linear-gradient(90deg,transparent,#000 20%),linear-gradient(0deg,transparent,#000 40%,#000 90%,transparent);mask-composite:intersect;opacity:.85}
+  .view-formacao::after{background:linear-gradient(0deg,#031638 0%,#031638 31%,#031638e6 49%,#03163840 76%,transparent)}
+  .view-formacao .view-word{margin-bottom:280px;font-size:clamp(56px,16vw,100px)}
+  .edu-main{width:100%;max-width:none}
+  .course .bar{font-size:1.7rem}.course-school{font-size:1rem}
+  .course{margin-bottom:48px}
+  .track{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0}
+  .track::before,.track::after{left:calc(100%/14);right:calc(100%/14);top:10px;bottom:auto;width:auto;height:2px}
+  .track::after{width:calc((100% - 100%/7)*var(--now)/6)}
+  .track li{display:grid;grid-template-columns:1fr;justify-items:center;align-items:start;gap:12px;min-height:0;font-size:.66rem}
+  .track li::before{width:11px;height:11px;margin:5px 0}.track .now::before{width:21px;height:21px;margin:0}.track .now{font-size:.7rem}
+  .track em{font-size:.55rem;padding:2px 5px}
+  .track-ends{font-size:.73rem}
+  .certs>li{grid-template-columns:78px 1fr;gap:16px}.cert-year{font-size:40px}.certs h4{font-size:1.12rem}.certs p{font-size:.88rem}
+  .view-skills .view-word{margin-bottom:20px}
+  .arcana-toolbar{display:block}.arcana-toolbar p{margin:14px 0 0;font-size:.82rem}
+  .arcana-filters{gap:10px;flex-wrap:nowrap}.arcana-filters button{font-size:.95rem;padding:10px 12px;white-space:nowrap}
+  .arcana-filters span{margin-left:5px}
+  .arcana-experience{display:flex;flex-direction:column;gap:0;min-height:0}
+  .arcana-stage{width:100%;height:350px;margin-top:8px}
+  .arcana-webgl{inset:0 -24px 30px}
+  .arcana-details{width:100%;padding:28px 0}
+  .arcana-detail h3{font-size:2.8rem}
+  .arcana-detail h4{margin-top:20px}.arcana-evidence li{padding-block:7px}
+  .arcana-catalog{gap:6px}.arcana-catalog button{font-size:.78rem;padding:8px 10px}
+  .deck-hint{max-width:38ch!important}
+}
+@media print{
+  .scene-environment,.arcana-stage,.arcana-toolbar,.arcana-catalog,.deck-hint{display:none!important}
+  .view-sobre::after,.view-formacao::after{display:none}
+  .about,.arcana-experience{display:block}.about-copy,.edu-main{width:100%;max-width:none}
+  .view-sobre .view-word,.view-formacao .view-word{margin:0 0 20px;font-size:40px}
+  .arcana-detail[hidden]{display:block!important}.arcana-detail{break-inside:avoid;margin-bottom:24px!important}
+}

@@ -1,0 +1,23 @@
+{
+  "name": "marcos-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.15.0",
+    "three": "^0.181.0",
+    "@fontsource-variable/archivo": "^5.2.0",
+    "@fontsource/anton": "^5.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "@types/bun": "^1.4.4",
+    "@types/three": "^0.181.0",
+    "typescript": "^5.9.0"
+  }
+}

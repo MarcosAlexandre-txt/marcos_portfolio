@@ -1,0 +1,164 @@
+---
+import { getImage } from 'astro:assets';
+import water from '../../assets/plates/water.png';
+import statues from '../../assets/plates/statues.png';
+import profile from '../../assets/plates/profile.png';
+import '@fontsource-variable/archivo/standard.css';
+import '@fontsource-variable/archivo/standard-italic.css';
+import '@fontsource/anton/latin-400.css';
+import '../styles/portfolio.css';
+import '../styles/sections.css';
+import '../styles/responsive.css';
+import '../styles/immersive.css';
+import '../styles/skills.css';
+import SectionViews from '../components/SectionViews.astro';
+const [waterView,statuesView,profileView] = await Promise.all([
+  getImage({src:water,format:'webp',quality:86}),
+  getImage({src:statues,format:'webp',quality:86}),
+  getImage({src:profile,format:'webp',quality:90}),
+]);
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const commands = [
+  {id:'sobre',label:'Sobre',hint:'Conhecer o Marcos'},
+  {id:'projetos',label:'Projetos',hint:'Explorar os projetos'},
+  {id:'formacao',label:'Formação',hint:'Conhecer minha formação'},
+  {id:'skills',label:'Skills',hint:'Explorar as competências'},
+  {id:'contato',label:'Contato',hint:'Conversar com o Marcos'},
+];
+const projects = [
+  {id:'altave',numeral:'I',term:'API 2026-2',title:'Ordens de Serviço',partner:'Parceiro: Altave'},
+  {id:'we-logic',numeral:'II',term:'API 2026-1',title:'We Logic',partner:'Parceiro: Newe Log'},
+  {id:'scrum-academy',numeral:'III',term:'API 2025-2',title:'SCRUM Academy',partner:'Cliente interno FATEC'},
+];
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Marcos Alexandre Bernardo. Desenvolvimento de Software Multiplataforma na FATEC São José dos Campos. Projetos, formação e contato." />
+    <meta name="theme-color" content="#020a52" />
+    <title>Marcos Alexandre Bernardo — Portfólio</title>
+    <script is:inline>
+      /* ?still freezes entrances so the page can be captured in its settled state */
+      if (new URLSearchParams(location.search).has('still')) document.documentElement.classList.add('still');
+    </script>
+  </head>
+  <body>
+    <div class="sea" aria-hidden="true">
+      <img class="sea-water" src={waterView.src} alt="" fetchpriority="high" />
+      <div class="sea-grade"></div>
+      <img class="sea-statues" src={statuesView.src} width={statuesView.attributes.width} height={statuesView.attributes.height} alt="" />
+    </div>
+    <div class="reveal" aria-hidden="true"></div>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <main id="conteudo" tabindex="-1">
+      <section class="home" id="inicio" aria-label="Menu principal">
+        <div class="stage">
+          <i class="shard shard-pink" aria-hidden="true"></i><i class="shard shard-violet" aria-hidden="true"></i><i class="shard shard-white" aria-hidden="true"></i>
+          <header class="identity">
+            <div class="portrait-frame">
+              <div class="portrait"><img src={profileView.src} width="411" height="447" alt="Foto de Marcos Alexandre Bernardo" /></div>
+            </div>
+            <h1><span>Marcos Alexandre</span><span>Bernardo</span></h1>
+            <p>Desenvolvimento de Software Multiplataforma <span>· FATEC SJC · 2026-2</span></p>
+          </header>
+          <nav class="commands" id="navegacao" aria-label="Seções do portfólio">
+            <ul>{commands.map((command,i)=><li style={`--item:${i}`}><a class:list={['command',{'selected':i===1}]} href={`#${command.id}`} data-hint={command.hint}>{command.label}</a></li>)}</ul>
+          </nav>
+          <nav class="arcana" aria-label="Projetos acadêmicos API">
+            {projects.map((project,i)=><a class:list={['arcana-card',{'selected':i===1}]} style={`--card:${i}`} href={`#${project.id}`} data-hint="Abrir dossiê do projeto" aria-label={`${project.term}: ${project.title}. ${project.partner}`}>
+              <b aria-hidden="true">{project.numeral}</b>
+              <span>{project.term}<small>{project.title}<br />{project.partner}</small></span>
+            </a>)}
+          </nav>
+          <aside class="command-hint" aria-label="Ajuda de navegação">
+            <p class="action" id="action-hint">Abrir dossiê do projeto</p>
+            <div class="hint-rule">Comandos</div>
+            <div class="keys"><span><kbd>↵</kbd>Confirmar</span><span><kbd>M</kbd>Música</span></div>
+          </aside>
+        </div>
+      </section>
+      <SectionViews />
+    </main>
+    <div class="music-controls">
+      <button class="music" id="music-toggle" type="button" aria-pressed="false" aria-label="Tocar Color Your Night">
+        <span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>♪ Color Your Night</span>
+      </button>
+      <label class="volume-control">Volume <input id="music-volume" type="range" min="0" max="1" step="0.05" value="0.35" /></label>
+    </div>
+    <audio id="soundtrack" src={`${base}audio/color-your-night.mp3`} preload="none" loop></audio>
+    <p class="sr-only" id="music-status" role="status"></p>
+    <script>
+      import '../scripts/navigation';
+      if(!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        void import('../scripts/sea').then(({startSea})=>startSea()).catch(()=>{});
+        void import('../scripts/scene').then(({startScenes})=>startScenes()).catch(()=>{});
+      }
+      void import('../scripts/arcanas').then(({startArcanas})=>startArcanas()).catch(()=>{});
+      const audio = document.querySelector<HTMLAudioElement>('#soundtrack')!;
+      const music = document.querySelector<HTMLButtonElement>('#music-toggle')!;
+      const status = document.querySelector<HTMLElement>('#music-status')!;
+      const volume = document.querySelector<HTMLInputElement>('#music-volume')!;
+      let savedVolume = .35;
+      try { const saved = localStorage.getItem('portfolio-volume'); if(saved!==null&&Number.isFinite(Number(saved))) savedVolume = Math.max(0,Math.min(1,Number(saved))); } catch {}
+      audio.volume = savedVolume; volume.value = String(savedVolume);
+      volume.addEventListener('input',()=>{ audio.volume = Number(volume.value); try { localStorage.setItem('portfolio-volume',volume.value); } catch {} });
+      async function toggleMusic() {
+        if (!audio.paused) audio.pause();
+        else try { await audio.play(); } catch { status.textContent = 'Não foi possível tocar a música. Tente novamente pelo botão de música.'; }
+      }
+      function updateMusic() {
+        const playing = !audio.paused;
+        music.setAttribute('aria-pressed',String(playing));
+        musicButtons.forEach(button=>button.setAttribute('aria-pressed',String(playing)));
+        music.setAttribute('aria-label',`${playing?'Pausar':'Tocar'} Color Your Night`);
+        status.textContent = playing?'Música tocando.':'Música pausada.';
+      }
+      /* the track can also be started from the scene where it is being listened to */
+      const musicButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-music]')];
+      music.addEventListener('click',toggleMusic);
+      musicButtons.forEach(button=>button.addEventListener('click',toggleMusic));
+      audio.addEventListener('play',updateMusic); audio.addEventListener('pause',updateMusic);
+      const commandLinks = [...document.querySelectorAll<HTMLAnchorElement>('.command')];
+      const cards = [...document.querySelectorAll<HTMLAnchorElement>('.arcana-card')];
+      const hint = document.querySelector<HTMLElement>('#action-hint')!;
+      for (const group of [commandLinks,cards]) {
+        for (const link of group) {
+          function select() {
+            group.forEach(item=>item.classList.toggle('selected',item===link));
+            hint.textContent = link.dataset.hint!;
+          }
+          link.addEventListener('pointerenter',select);
+          link.addEventListener('focus',select);
+          link.addEventListener('keydown',e=>{
+            const keys = group===cards?['ArrowLeft','ArrowRight']:['ArrowUp','ArrowDown'];
+            if(!keys.includes(e.key)) return;
+            e.preventDefault();
+            const delta = e.key===keys[0]?-1:1;
+            group[(group.indexOf(link)+delta+group.length)%group.length].focus();
+          });
+        }
+      }
+      /* cards lean toward the pointer */
+      for (const card of document.querySelectorAll<HTMLElement>('[data-tilt],.arcana-card')) {
+        card.addEventListener('pointermove',event=>{
+          const box = card.getBoundingClientRect();
+          card.style.setProperty('--ry',`${((event.clientX-box.left)/box.width-.5)*16}deg`);
+          card.style.setProperty('--rx',`${-((event.clientY-box.top)/box.height-.5)*12}deg`);
+        });
+        card.addEventListener('pointerleave',()=>{ card.style.removeProperty('--rx'); card.style.removeProperty('--ry'); });
+      }
+      document.addEventListener('keydown',e=>{
+        const target = e.target as HTMLElement;
+        if(target.matches('input,textarea,select,[contenteditable]')||e.ctrlKey||e.metaKey||e.altKey) return;
+        if(e.key.toLowerCase()==='m'&&!e.repeat) { e.preventDefault(); void toggleMusic(); }
+        if(e.key==='Escape') { e.preventDefault(); location.hash='inicio'; }
+        if(!document.querySelector<HTMLElement>('.home')!.hidden&&(e.key==='ArrowDown'||e.key==='ArrowUp')&&!commandLinks.includes(target as HTMLAnchorElement)&&!cards.includes(target as HTMLAnchorElement)) {
+          e.preventDefault(); commandLinks[1].focus();
+        }
+      });
+    </script>
+  </body>
+</html>
