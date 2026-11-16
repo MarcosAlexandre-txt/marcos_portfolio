@@ -25,7 +25,8 @@ bun run preview
 - `src/data/portfolio.ts`: dados factuais dos projetos e competências.
 - `src/scripts/navigation.ts`: rotas por hash, abas acessíveis e retorno de foco.
 - `src/scripts/ocean.ts`: água, bolhas e profundidade com Three.js; carregamento separado.
-- `src/scripts/scene.ts`: ambientes animados do trem e da sala, com enquadramento proporcional e pausa fora da tela.
+- `assets/plates/*-epic.png` e `*-engraving.png`: pinturas e gravuras originais para os capítulos; foto real como referência de identidade e procedência em `design/source/oil-scenes-prompts.md`.
+- `src/scripts/interaction-particles.ts`: resposta breve e leve ao hover, foco e clique nos comandos; respeita movimento reduzido.
 - `src/scripts/arcanas.ts`: baralho Three.js de competências, seleção, filtros e fallback sem WebGL.
 - `src/styles/`: sistema visual, seções e adaptação responsiva; `immersive.css` contém as novas composições de Sobre, Formação e Skills.
 - `assets/plates/`: imagens de produção aprovadas na revisão de assets. O Astro gera versões WebP para a página.

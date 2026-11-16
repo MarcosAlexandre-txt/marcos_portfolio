@@ -2,6 +2,7 @@
  * Requires ImageMagick. Brand marks: locally vendored Devicon v2.17.0 (MIT).
  * No network at build/runtime; labels use the same self-hosted fonts as the site. */
 import { mkdirSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { skillArcanas } from '../src/data/portfolio';
@@ -84,7 +85,7 @@ try {
     const text=wrap(item.kind==='soft'?item.detail:caption,44);
     const output=`assets/skill-fronts/${id}.webp`;
     const args=['magick','-background','none',source,'(','-background','none','-fill','#101a32','-font',font,'-pointsize',String(titleSize),'-gravity','center',`label:${title}`,')','-gravity','north','-geometry',`+0+${title.includes('\n')?895:916}`,'-composite','(','-background','none','-fill','#273c4b','-font',body,'-pointsize','27','-interline-spacing','8','-gravity','center',`label:${text}`,')','-gravity','north','-geometry','+0+1053','-composite','-quality','96',output];
-    const result=Bun.spawnSync(args);if(result.exitCode)throw new Error(result.stderr.toString());
+    const result=spawnSync(args[0],args.slice(1),{encoding:'utf8'});if(result.error||result.status!==0)throw new Error(result.error?.message||result.stderr);
     writeFileSync(`${output}.json`,JSON.stringify({origin:'Original vector card layout and abstract geometry authored for this portfolio',generator:'scripts/generate-skill-fronts.ts',skill:item.name,width:848,height:1264,brandMark:paths[key]||item.kind==='soft'?'Original symbolic geometry (not an official brand mark)':`Devicon v2.17.0: ${key}-original.svg, MIT; trademark rights remain with owners`,proficiency:false},null,2)+'\n');
     console.log(output,item.name);
   }

@@ -1,0 +1,68 @@
+/* Chapter art and angular staging: original imagery carries the drama, HTML stays readable. */
+.hero-art{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:50% 42%;filter:saturate(1.08) contrast(1.04)}
+.stage::before{content:'';position:absolute;z-index:0;inset:0;pointer-events:none;background:linear-gradient(90deg,#f3114f38 0%,#06122c08 48%,#06122c22 100%)}
+.stage::after{content:'';position:absolute;z-index:0;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(#fff 1px,transparent 1px),radial-gradient(#ff477c 1px,transparent 1px);background-size:87px 103px,137px 131px;background-position:11px 7px,43px 57px;animation:epic-drift 18s linear infinite}
+.identity{left:clamp(24px,3vw,64px);top:clamp(24px,5vh,64px);width:auto;height:auto;transform:none;animation:none;z-index:5}
+.identity::before,.identity::after,.identity .portrait-frame{display:none}
+.identity h1{position:static;font-size:clamp(1.45rem,2vw,2.4rem);line-height:.94;letter-spacing:-.035em;color:#fff;text-shadow:3px 3px 0 #041332,5px 5px 0 var(--red)}
+.identity h1 span{display:inline}.identity h1 span+span::before{content:' '}
+.identity p{position:static;margin:.55rem 0 0;font-size:clamp(.72rem,.9vw,.95rem);font-style:normal;color:#dbf3ff;white-space:normal;text-shadow:0 2px 5px #020824}
+.identity p span{color:#fff}
+.commands{position:relative;z-index:4}
+.commands li:nth-child(1){color:#fff}.commands li:nth-child(2){color:#fff}.commands li:nth-child(3){color:#fff}.commands li:nth-child(4){color:#fff}.commands li:nth-child(5){color:#fff}
+.command:not(.selected){text-shadow:3px 4px 0 #06142c,0 0 22px #06142c}
+.arcana{position:relative;z-index:4}
+.command-hint{z-index:5}
+.chapter-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0;opacity:.4}
+.view-projetos{background:linear-gradient(115deg,#ac2f0c 0%,#5d2250 27%,#071646 61%,#030e25 100%)}
+.view-projetos .chapter-art{object-position:60% 20%;opacity:.32;mix-blend-mode:screen}
+.view-projetos::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#b33a0d45,#07144ac9 64%,#07144a82)}
+.view-projetos .view-body,.view-projetos .view-word{z-index:2}
+.view-projetos .view-word{color:#fff;opacity:.55}
+.view-projetos .project-tabs{position:relative;z-index:2}
+.view-sobre{background:#071229}.view-sobre::after{background:linear-gradient(90deg,#020a23ed,#061c4f9c 38%,transparent 68%),linear-gradient(0deg,#020a23f7,transparent 64%)}
+.view-sobre .about{grid-template-areas:'copy air' 'copy ficha';grid-template-rows:auto 1fr}
+.view-sobre .about-copy{align-self:start}
+.view-sobre .about-portrait{display:flex;align-items:center;gap:18px;width:auto;max-width:none;margin:clamp(28px,4vh,48px) 0 0;padding-top:18px;border-top:1px solid #91dafa66}
+.view-sobre .about-portrait .tile{width:118px;flex:0 0 118px;aspect-ratio:411/447;filter:none;transform:none;box-shadow:7px 7px 0 #0a3272}
+.view-sobre .about-portrait .tile::before,.view-sobre .about-portrait .tile::after{display:none}
+.view-sobre .about-portrait .tile img{inset:0;width:100%;height:100%;border:2px solid #d9ecff;clip-path:none;filter:grayscale(1) contrast(1.2) brightness(1.04)}
+.view-sobre .about-portrait figcaption{max-width:17ch;margin:0;padding-left:14px;border-left:3px solid #87dfff;color:#e2f3ff;font-size:.82rem;font-style:normal;font-weight:700;line-height:1.35;transform:none}
+.view-formacao{background:radial-gradient(circle at 72% 27%,#66358f 0%,#24174b 42%,#061229 100%)}
+.view-formacao::after{background:linear-gradient(90deg,#140c31f2 0%,#20123bdc 29%,#251c4b87 48%,transparent 76%),linear-gradient(0deg,#110e2ef2,transparent 56%)}
+.view-formacao .classroom-environment{mask-image:linear-gradient(90deg,transparent,#000 25%),linear-gradient(#000 82%,transparent);mask-composite:intersect}
+.view-formacao .view-word{color:#f6e9ff;text-shadow:5px 6px 0 #a42ec86b}
+.view-skills{background:radial-gradient(circle at 76% 27%,#2d47a2 0%,#063e82 35%,#041034 75%)}
+.view-skills::before{background:#d0c5ff1f}
+.view-contato{background:linear-gradient(110deg,#ab123b 0%,#4e1438 34%,#080b19 78%)}
+.view-contato .chapter-art{object-position:62% center;opacity:.52;mix-blend-mode:screen}
+.view-contato::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#630b35db,#330d36a3 50%,transparent 82%)}
+.view-contato .view-body,.view-contato .view-word{z-index:2}
+.view-contato .view-word{color:#fff;opacity:.22}
+.view-contato .contact-areas{color:#ffe5f0}
+.chapter-art,.scene-environment img{animation:epic-breathe 12s ease-in-out infinite alternate}
+@keyframes epic-breathe{to{transform:scale(1.035) translateY(-.6%)}}
+@keyframes epic-drift{to{background-position:98px 110px,180px 188px}}
+/* Restore the card's theatrical diagonal and show more of the rotation. */
+.skill-console .arcana-fallback{transform:translate(-50%,-50%) rotate(-16deg)}
+.skill-console .arcana-catalog button{transform:rotate(-5deg);margin:5px 2px;transition:transform .25s,background .18s,color .18s}
+.skill-console .arcana-catalog button:hover,.skill-console .arcana-catalog button[aria-pressed=true]{transform:translateY(-5px) rotate(-2deg)}
+@media(max-width:900px){
+  .stage{padding-top:min(57svh,520px)}
+  .hero-art{height:min(62svh,580px);inset:0 0 auto;object-position:67% 43%;mask-image:linear-gradient(#000 70%,transparent)}
+  .stage::before{height:min(62svh,580px);bottom:auto;background:linear-gradient(90deg,#07142a83,transparent 70%)}
+  .identity{position:absolute;left:22px;top:23px;width:calc(100% - 44px);margin:0;height:auto;transform:none}
+  .identity h1{left:auto;top:auto;font-size:clamp(1.1rem,4.7vw,1.8rem);line-height:1;white-space:normal}
+  .identity p{left:auto;top:auto;right:auto;font-size:.73rem;line-height:1.25}
+  .commands{margin-top:0}
+  .chapter-art{object-position:72% center}
+  .view-projetos .chapter-art,.view-contato .chapter-art{opacity:.22}
+  .view-formacao::after{background:linear-gradient(0deg,#140c31 0%,#1b1235eb 36%,transparent 78%)}
+}
+@media(max-width:700px){
+  .view-sobre .about{display:flex;flex-direction:column;align-items:stretch;gap:38px;min-height:0}
+  .view-sobre .about-portrait{margin-top:28px}
+  .view-sobre .about-portrait .tile{width:94px;flex-basis:94px}
+}
+@media(prefers-reduced-motion:reduce){.stage::after,.chapter-art,.scene-environment img{animation:none}}
+@media print{.hero-art,.chapter-art{display:none!important}}

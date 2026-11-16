@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Monograma de Marcos">
+  <path fill="#061322" d="M4 4h56v56H4z"/>
+  <path fill="#ff285e" d="M4 4h6v56H4z"/>
+  <path fill="#f6f5e9" d="M13 15h8l11 14 11-14h8v31h-8V27L32 40 21 27v19h-8z"/>
+  <path fill="none" stroke="#77dfd6" stroke-width="3" d="M15 51c6-3 11-3 17 0s11 3 17 0"/>
+</svg>

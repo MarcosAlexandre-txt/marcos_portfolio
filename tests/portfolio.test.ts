@@ -17,10 +17,14 @@ describe('Conteúdo estático e restrições do portfólio', () => {
       expect(p.problem.length).toBeGreaterThan(80);
       expect(p.solution.length).toBeGreaterThan(80);
       expect(p.contributions.length).toBeGreaterThanOrEqual(4);
+      expect(p.softSkills.length).toBeGreaterThanOrEqual(3);
+      expect(html).toContain(p.teamRepo);
       expect(html).toContain(`id="${p.id}-title"`);
     }
     expect(html.match(/Soft skills exercitadas/g)?.length).toBe(3);
-    expect(html.match(/URL da cópia na conta MarcosAlexandre-txt a confirmar/g)?.length).toBe(3);
+    expect(html).not.toContain('URL da cópia na conta MarcosAlexandre-txt a confirmar');
+    expect(html).not.toContain('Tabletop Corner');
+    expect(html).not.toContain('class="hero-brief"');
   });
   test('não inventa níveis, URLs de API ou experiência profissional', () => {
     expect(skillGroups.flatMap(g=>g.skills)).toHaveLength(23);

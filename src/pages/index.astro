@@ -2,7 +2,7 @@
 import { getImage } from 'astro:assets';
 import water from '../../assets/plates/water.png';
 import statues from '../../assets/plates/statues.png';
-import profile from '../../assets/plates/profile.png';
+import homeArt from '../../assets/plates/home-statues-oil.png';
 import '@fontsource-variable/archivo/standard.css';
 import '@fontsource-variable/archivo/standard-italic.css';
 import '@fontsource/anton/latin-400.css';
@@ -11,24 +11,21 @@ import '../styles/sections.css';
 import '../styles/responsive.css';
 import '../styles/immersive.css';
 import '../styles/skills.css';
+import '../styles/epic.css';
+import '../styles/chapter-refinement.css';
 import SectionViews from '../components/SectionViews.astro';
-const [waterView,statuesView,profileView] = await Promise.all([
+const [waterView,statuesView,homeArtView] = await Promise.all([
   getImage({src:water,format:'webp',quality:86}),
   getImage({src:statues,format:'webp',quality:86}),
-  getImage({src:profile,format:'webp',quality:90}),
+  getImage({src:homeArt,format:'webp',quality:86}),
 ]);
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const commands = [
-  {id:'sobre',label:'Sobre',hint:'Conhecer o Marcos'},
-  {id:'projetos',label:'Projetos',hint:'Explorar os projetos'},
-  {id:'formacao',label:'Formação',hint:'Conhecer minha formação'},
-  {id:'skills',label:'Skills',hint:'Explorar as competências'},
-  {id:'contato',label:'Contato',hint:'Conversar com o Marcos'},
-];
-const projects = [
-  {id:'altave',numeral:'I',term:'API 2026-2',title:'Ordens de Serviço',partner:'Parceiro: Altave'},
-  {id:'we-logic',numeral:'II',term:'API 2026-1',title:'We Logic',partner:'Parceiro: Newe Log'},
-  {id:'scrum-academy',numeral:'III',term:'API 2025-2',title:'SCRUM Academy',partner:'Cliente interno FATEC'},
+  {id:'sobre',label:'Sobre',hint:'Sobre mim',title:'Entre ideia e sistema.',description:'Quem sou, o que estudo e o que me move.'},
+  {id:'projetos',label:'Projetos',hint:'Explorar os projetos',title:'Projetos em campo.',description:'Três APIs, contribuições individuais e código para explorar.'},
+  {id:'formacao',label:'Formação',hint:'Conhecer minha formação',title:'O caminho continua.',description:'Minha trajetória em DSM na FATEC São José dos Campos.'},
+  {id:'skills',label:'Skills',hint:'Explorar as competências',title:'Um baralho de práticas.',description:'Competências ligadas aos projetos que as colocaram em ação.'},
+  {id:'contato',label:'Contato',hint:'Entrar em contato',title:'Vamos conversar.',description:'Canais para trocar ideias e construir o próximo capítulo.'},
 ];
 ---
 <!doctype html>
@@ -39,6 +36,7 @@ const projects = [
     <meta name="description" content="Marcos Alexandre Bernardo. Desenvolvimento de Software Multiplataforma na FATEC São José dos Campos. Projetos, formação e contato." />
     <meta name="theme-color" content="#020a52" />
     <title>Marcos Alexandre Bernardo — Portfólio</title>
+    <link rel="icon" type="image/svg+xml" href={`${base}brand-mark.svg`} />
     <script is:inline>
       /* ?still freezes entrances so the page can be captured in its settled state */
       if (new URLSearchParams(location.search).has('still')) document.documentElement.classList.add('still');
@@ -55,27 +53,26 @@ const projects = [
     <main id="conteudo" tabindex="-1">
       <section class="home" id="inicio" aria-label="Menu principal">
         <div class="stage">
+          <img class="hero-art" src={homeArtView.src} width={homeArtView.attributes.width} height={homeArtView.attributes.height} alt="" fetchpriority="high" aria-hidden="true" />
           <i class="shard shard-pink" aria-hidden="true"></i><i class="shard shard-violet" aria-hidden="true"></i><i class="shard shard-white" aria-hidden="true"></i>
           <header class="identity">
-            <div class="portrait-frame">
-              <div class="portrait"><img src={profileView.src} width="411" height="447" alt="Foto de Marcos Alexandre Bernardo" /></div>
-            </div>
-            <h1><span>Marcos Alexandre</span><span>Bernardo</span></h1>
-            <p>Desenvolvimento de Software Multiplataforma <span>· FATEC SJC · 2026-2</span></p>
+            <img class="brand-mark" src={`${base}brand-mark.svg`} width="64" height="64" alt="" />
+            <div><h1>Marcos Alexandre Bernardo</h1><p>Desenvolvimento de Software Multiplataforma <span>· FATEC SJC</span></p></div>
           </header>
+          <span class="home-edition">Portfólio</span>
           <nav class="commands" id="navegacao" aria-label="Seções do portfólio">
-            <ul>{commands.map((command,i)=><li style={`--item:${i}`}><a class:list={['command',{'selected':i===1}]} href={`#${command.id}`} data-hint={command.hint}>{command.label}</a></li>)}</ul>
+            <ul>{commands.map((command,i)=><li style={`--item:${i}`}><a class:list={['command',{'selected':i===0}]} href={`#${command.id}`} data-hint={command.hint} data-title={command.title} data-description={command.description}>{command.label}</a></li>)}</ul>
           </nav>
-          <nav class="arcana" aria-label="Projetos acadêmicos API">
-            {projects.map((project,i)=><a class:list={['arcana-card',{'selected':i===1}]} style={`--card:${i}`} href={`#${project.id}`} data-hint="Abrir dossiê do projeto" aria-label={`${project.term}: ${project.title}. ${project.partner}`}>
-              <b aria-hidden="true">{project.numeral}</b>
-              <span>{project.term}<small>{project.title}<br />{project.partner}</small></span>
-            </a>)}
-          </nav>
+          <aside class="home-preview" aria-label="Seção selecionada">
+            <span class="home-preview-eyebrow">01 / Quem eu sou</span>
+            <h2 data-home-title>Entre ideia e sistema.</h2>
+            <p data-home-description>Quem sou, o que estudo e o que me move.</p>
+            <a data-home-open href="#sobre">Explorar Sobre <span aria-hidden="true">↗</span></a>
+          </aside>
+          <nav class="home-social" aria-label="Redes sociais"><a href="https://github.com/MarcosAlexandre-txt" target="_blank" rel="noopener noreferrer">GitHub <span class="sr-only">(abre em nova aba)</span></a><a href="https://www.linkedin.com/in/marcos-alexandre-cs" target="_blank" rel="noopener noreferrer">LinkedIn <span class="sr-only">(abre em nova aba)</span></a></nav>
           <aside class="command-hint" aria-label="Ajuda de navegação">
-            <p class="action" id="action-hint">Abrir dossiê do projeto</p>
-            <div class="hint-rule">Comandos</div>
-            <div class="keys"><span><kbd>↵</kbd>Confirmar</span><span><kbd>M</kbd>Música</span></div>
+            <p class="action" id="action-hint">Conhecer o Marcos</p>
+            <div class="keys"><span><kbd>↑ ↓</kbd>Navegar</span><span><kbd>↵</kbd>Abrir</span><span><kbd>M</kbd>Música</span></div>
           </aside>
         </div>
       </section>
@@ -92,11 +89,12 @@ const projects = [
     <p class="sr-only" id="music-status" role="status"></p>
     <script>
       import '../scripts/navigation';
+      import '../scripts/about-carousel';
       if(!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         void import('../scripts/sea').then(({startSea})=>startSea()).catch(()=>{});
-        void import('../scripts/scene').then(({startScenes})=>startScenes()).catch(()=>{});
       }
       void import('../scripts/arcanas').then(({startArcanas})=>startArcanas()).catch(()=>{});
+      void import('../scripts/interaction-particles').then(({startInteractionParticles})=>startInteractionParticles());
       const audio = document.querySelector<HTMLAudioElement>('#soundtrack')!;
       const music = document.querySelector<HTMLButtonElement>('#music-toggle')!;
       const status = document.querySelector<HTMLElement>('#music-status')!;
@@ -124,11 +122,22 @@ const projects = [
       const commandLinks = [...document.querySelectorAll<HTMLAnchorElement>('.command')];
       const cards = [...document.querySelectorAll<HTMLAnchorElement>('.arcana-card')];
       const hint = document.querySelector<HTMLElement>('#action-hint')!;
+      const previewTitle = document.querySelector<HTMLElement>('[data-home-title]')!;
+      const previewDescription = document.querySelector<HTMLElement>('[data-home-description]')!;
+      const previewOpen = document.querySelector<HTMLAnchorElement>('[data-home-open]')!;
+      const previewEyebrow = document.querySelector<HTMLElement>('.home-preview-eyebrow')!;
       for (const group of [commandLinks,cards]) {
         for (const link of group) {
           function select() {
             group.forEach(item=>item.classList.toggle('selected',item===link));
             hint.textContent = link.dataset.hint!;
+            if (group===commandLinks) {
+              previewTitle.textContent=link.dataset.title!;
+              previewDescription.textContent=link.dataset.description!;
+              previewOpen.href=link.hash;
+              previewOpen.firstChild!.textContent=`Explorar ${link.textContent!.trim()} `;
+              previewEyebrow.textContent=`${String(commandLinks.indexOf(link)+1).padStart(2,'0')} / ${link.dataset.hint}`;
+            }
           }
           link.addEventListener('pointerenter',select);
           link.addEventListener('focus',select);
@@ -156,7 +165,7 @@ const projects = [
         if(e.key.toLowerCase()==='m'&&!e.repeat) { e.preventDefault(); void toggleMusic(); }
         if(e.key==='Escape') { e.preventDefault(); location.hash='inicio'; }
         if(!document.querySelector<HTMLElement>('.home')!.hidden&&(e.key==='ArrowDown'||e.key==='ArrowUp')&&!commandLinks.includes(target as HTMLAnchorElement)&&!cards.includes(target as HTMLAnchorElement)) {
-          e.preventDefault(); commandLinks[1].focus();
+          e.preventDefault(); commandLinks[0].focus();
         }
       });
     </script>

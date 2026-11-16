@@ -4,17 +4,19 @@ import type { ImageMetadata } from 'astro';
 import { skillEvidenceLink } from '../data/evidence';
 import skillCard from '../../assets/plates/skill-card.png';
 import { academicProjects, personalProjects, skillArcanas, interests, semesters, currentSemester, certifications } from '../data/portfolio';
-import profile from '../../assets/plates/profile.png';
-import train from '../../assets/plates/train.png';
-import trainMask from '../../assets/plates/train-mask.png';
-import classroom from '../../assets/plates/classroom.png';
-import classroomMask from '../../assets/plates/classroom-mask.png';
-const [profileView,trainView,trainMaskView,classroomView,classroomMaskView] = await Promise.all([
-  getImage({src:profile,format:'webp',quality:90}),
+import heroProfile from '../../assets/plates/hero-epic.png';
+import train from '../../assets/plates/about-epic.png';
+import classroom from '../../assets/plates/formation-epic.png';
+import skillsArt from '../../assets/plates/skills-observatory.png';
+import projectsArt from '../../assets/plates/projects-engraving.png';
+import contactArt from '../../assets/plates/contact-engraving.png';
+const [heroProfileView,trainView,classroomView,skillsArtView,projectsArtView,contactArtView] = await Promise.all([
+  getImage({src:heroProfile,format:'webp',quality:86}),
   getImage({src:train,format:'webp',quality:88}),
-  getImage({src:trainMask,format:'png'}),
   getImage({src:classroom,format:'webp',quality:88}),
-  getImage({src:classroomMask,format:'png'}),
+  getImage({src:skillsArt,format:'webp',quality:85}),
+  getImage({src:projectsArt,format:'webp',quality:82}),
+  getImage({src:contactArt,format:'webp',quality:82}),
 ]);
 const cardArt = await getImage({src:skillCard,format:'webp',quality:96});
 const fronts = import.meta.glob('../../assets/skill-fronts/*.webp', {eager:true, query:'?url', import:'default'}) as Record<string,string>;
@@ -38,36 +40,47 @@ const channels = [
       <a class="view-back" href="#inicio"><kbd>Esc</kbd>Menu</a>
       <ul>{sections.map(item=><li><a href={`#${item.id}`} aria-current={item.id===section.id?'page':undefined}>{item.name}</a></li>)}</ul>
     </nav>
-    {section.id==='sobre'&&<figure class="scene scene-environment train-environment" data-scene="train" data-mask={trainMaskView.src} aria-hidden="true">
-      <img src={trainView.src} width="1672" height="941" alt="" />
+    {section.id==='projetos'&&<img class="chapter-art projects-art" src={projectsArtView.src} width={projectsArtView.attributes.width} height={projectsArtView.attributes.height} alt="" aria-hidden="true" loading="lazy" />}
+    {section.id==='skills'&&<img class="chapter-art skills-art" src={skillsArtView.src} width={skillsArtView.attributes.width} height={skillsArtView.attributes.height} alt="" aria-hidden="true" loading="lazy" />}
+    {section.id==='contato'&&<img class="chapter-art contact-art" src={contactArtView.src} width={contactArtView.attributes.width} height={contactArtView.attributes.height} alt="" aria-hidden="true" loading="lazy" />}
+    {section.id==='sobre'&&<figure class="scene scene-environment train-environment about-backdrops" aria-hidden="true">
+      <img class="is-active" data-story-backdrop="0" src={heroProfileView.src} width={heroProfileView.attributes.width} height={heroProfileView.attributes.height} alt="" />
+      <img data-story-backdrop="1" src={trainView.src} width={trainView.attributes.width} height={trainView.attributes.height} alt="" loading="lazy" />
+      <img data-story-backdrop="2" src={classroomView.src} width={classroomView.attributes.width} height={classroomView.attributes.height} alt="" loading="lazy" />
     </figure>}
-    {section.id==='formacao'&&<figure class="scene scene-environment classroom-environment" data-scene="classroom" data-mask={classroomMaskView.src} aria-hidden="true">
-      <img src={classroomView.src} width="1082" height="1453" alt="" loading="lazy" />
+    {section.id==='formacao'&&<figure class="scene scene-environment classroom-environment" aria-hidden="true">
+      <img src={classroomView.src} width={classroomView.attributes.width} height={classroomView.attributes.height} alt="" loading="lazy" />
     </figure>}
     <h2 class="view-word" id={`${section.id}-title`} tabindex="-1">{section.name}</h2>
     <div class="view-body">
 
       {section.id==='sobre'&&<div class="about">
-        <div class="about-copy">
-          <h3 class="bar">Marcos Alexandre Bernardo</h3>
-          <p class="lead">Construindo software. Aprendendo com problemas reais.</p>
-          <p>Sou estudante de Desenvolvimento de Software Multiplataforma na FATEC São José dos Campos e estou em busca ativa de estágio.</p>
-          <p>Quero aplicar em um contexto profissional a prática que venho adquirindo em projetos com clientes parceiros reais e no desenvolvimento de sistemas auditáveis.</p>
-          <a class="go" href="#contato">Vamos conversar</a>
-        </div>
-        <button class="now-playing" type="button" data-music aria-pressed="false">
-          <span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Color Your Night</span><span class="sr-only">: tocar ou pausar a música</span>
-        </button>
-        <figure class="about-portrait">
-          <div class="tile" data-tilt><img src={profileView.src} width="411" height="447" alt="Marcos Alexandre Bernardo" loading="lazy" /></div>
-          <figcaption>São José dos Campos, SP</figcaption>
-        </figure>
-        <dl class="ficha">
+          <section class="about-story" aria-label="Retratos e trajetória" aria-roledescription="carrossel">
+            <ol class="about-story-slides">
+              <li class="about-story-slide" aria-label="1 de 3">
+                <span class="about-story-index">01 / Quem eu sou</span><h3>Aprender.<br />Construir.<br />Refinar.</h3>
+                <p>Sou Marcos Alexandre Bernardo. Estudo Desenvolvimento de Software Multiplataforma na FATEC São José dos Campos.</p>
+                <a class="go" href="#projetos">Ver o que construí</a>
+              </li>
+              <li class="about-story-slide" aria-label="2 de 3" hidden>
+                <span class="about-story-index">02 / Na prática</span><h3>Ideias ganham<br />forma quando<br />são testadas.</h3>
+                <p>Nas APIs da FATEC, trabalhei com empresas parceiras externas. Administrei cerimônias Scrum, organizei backlogs e entregas de valor para nossos clientes.</p>
+                <a class="go" href="#altave">Ver minhas contribuições</a>
+              </li>
+              <li class="about-story-slide" aria-label="3 de 3" hidden>
+                <span class="about-story-index">03 / Próximo capítulo</span><h3>O Próximo<br />Passo.</h3>
+                <p>Busco estágio na área de desenvolvimento de software e análise de dados para continuar meu crescimento profissional.</p>
+                <a class="go" href="#contato">Vamos conversar</a>
+              </li>
+            </ol>
+            <div class="about-story-controls"><button type="button" data-story-prev aria-label="Retrato anterior">←</button><span data-story-position aria-live="polite">01 / 03</span><button type="button" data-story-next aria-label="Próximo retrato">→</button></div>
+          </section>
+        <div class="about-facts"><div class="about-facts-intro"><h3></h3><p>Estudo DSM desde agosto de 2025. Os projetos integradores da FATEC me deram prática com clientes parceiros, organização ágil do trabalho e desenvolvimento em equipe. Busco estágio para continuar esse caminho.</p></div><dl class="ficha">
           <div><dt>Formação atual</dt><dd>Tecnólogo em Desenvolvimento de Software Multiplataforma<small>FATEC São José dos Campos – Prof. Jessen Vidal</small></dd></div>
           <div><dt>Período</dt><dd>Agosto de 2025 a dezembro de 2028</dd></div>
           <div><dt>Objetivo</dt><dd>Estágio, para levar a prática dos projetos a um contexto profissional</dd></div>
           <div><dt>Áreas de interesse</dt><dd><ul class="chips">{interests.map(interest=><li>{interest}</li>)}</ul></dd></div>
-        </dl>
+        </dl></div>
       </div>}
 
       {section.id==='projetos'&&<>
@@ -75,6 +88,7 @@ const channels = [
 
         <div class="project-panel api" id="api">
           <h3 class="sr-only">Projetos acadêmicos API</h3>
+          <p class="api-explainer">API (Aprendizagem por Projetos Integradores): projetos semestrais da FATEC em que alunos desenvolvem soluções para problemas reais, inclusive de clientes externos, com práticas do Scrum.</p>
           <nav class="project-index" aria-label="Escolher projeto API">{academicProjects.map((project,i)=><a href={`#${project.id}`} style={`--card:${i}`} data-tilt>
             <b aria-hidden="true">{project.numeral}</b><span>{project.term}<small>{project.partner}</small></span>
           </a>)}</nav>
@@ -95,11 +109,10 @@ const channels = [
               <section><h4>Minhas contribuições</h4><ul class="marks">{project.contributions.map(contribution=><li>{contribution}</li>)}</ul></section>
               <section>
                 <h4>Tecnologias</h4><ul class="chips">{project.technologies.map(technology=><li>{technology}</li>)}</ul>
-                <h4>Hard skills</h4><p>{project.technologies.join(', ')}. <span class="pending">Aprendizados adicionais a detalhar.</span></p>
-                <h4>Soft skills exercitadas</h4><p class="pending">Aguardando confirmação do Marcos.</p>
+                <h4>Hard skills</h4><p>{project.technologies.join(', ')}.</p>
+                <h4>Soft skills exercitadas</h4><ul class="chips">{project.softSkills.map(item=><li>{item}</li>)}</ul>
                 <h4>Repositório</h4>
-                {project.teamRepo&&<p><a class="go" href={project.teamRepo} target="_blank" rel="noopener noreferrer">Repositório do time<span class="sr-only"> (abre em nova aba)</span></a></p>}
-                <p class="pending">URL da cópia na conta MarcosAlexandre-txt a confirmar.</p>
+                <p><a class="go" href={project.teamRepo} target="_blank" rel="noopener noreferrer">Ver repositório do projeto<span class="sr-only"> (abre em nova aba)</span></a></p>
               </section>
             </div>
           </article>)}</div>
@@ -142,6 +155,7 @@ const channels = [
       </div>}
 
       {section.id==='skills'&&<div class="arcana-menu skill-console" data-arcana-menu data-card-art={cardArt.src}>
+        <p class="skills-kicker">Observatório dos Arcanos · escolha uma carta e siga suas evidências</p>
         <div class="arcana-filters" role="group" aria-label="Tipo de competência">
           <button type="button" data-skill-filter="hard" aria-pressed="true">Hard skills</button>
           <button type="button" data-skill-filter="soft" aria-pressed="false">Soft skills</button>
@@ -161,7 +175,7 @@ const channels = [
                   {item.evidence.length>0?<><h4>Na prática</h4><ul class="arcana-evidence">{item.evidence.map(e=>{
                     const link=skillEvidenceLink(e);
                     return <li class:list={[{'has-evidence-link':Boolean(link)}]}>{link?<a class="skill-evidence-link" href={link.href} target={link.external?'_blank':undefined} rel={link.external?'noopener noreferrer':undefined} aria-label={`${e}: ${link.external?'abrir repositório em nova aba':'ver evidência no portfólio'}`}><span>{e}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d={link.external?'M5 19 19 5M5 5h14v14':'M4 12h16m-6-6 6 6-6 6'}/></svg></a>:e}</li>;
-                  })}</ul></>:item.kind==='hard'&&<p class="arcana-description">Competência informada no currículo. Evidência em projeto ainda não detalhada.</p>}
+                  })}</ul></>:item.kind==='hard'&&<p class="arcana-description">Potência sendo colocada em ato. Projetos a caminho.</p>}
                   {item.evidence.length===0&&<a class="go" href="#projetos">Explorar os projetos</a>}
                 </div>
               </article>)}
@@ -186,7 +200,7 @@ const channels = [
         <ul class="channels">{channels.map((channel,i)=><li style={`--item:${i}`}><a href={channel.href} target={channel.external?'_blank':undefined} rel={channel.external?'noopener noreferrer':undefined}>
           <span class="channel-name">{channel.name}</span><span class="channel-value">{channel.value}</span>{channel.external&&<span class="sr-only"> (abre em nova aba)</span>}
         </a></li>)}</ul>
-        <footer class="credits"><h4>Créditos</h4><p>Água: <a href="https://commons.wikimedia.org/wiki/File:Snell%27s_window_edge.jpg">“Snell’s window edge.jpg”</a>, de Hellbus, Wikimedia Commons. Adaptação de cores sob <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p><p>Estátuas: imagem fornecida pelo titular. Autoria e licença a confirmar antes da publicação.</p><p>Música: “Color Your Night”, de Persona 3 Reload. Arquivo fornecido pelo titular, que declarou autorização de uso. Crédito detalhado e termos de distribuição pendentes.</p><p>Verso do baralho: recriação gerada por IA inspirada na referência de Persona, não um arquivo original do jogo. Frentes: composição e desenhos abstratos autorais; marcas das tecnologias via Devicon (MIT), com direitos de marca de seus respectivos titulares.</p><p>Tipografia: Archivo e Anton — SIL Open Font License.</p></footer>
+        <footer class="credits"><h4>Créditos</h4><p>Água: <a href="https://commons.wikimedia.org/wiki/File:Snell%27s_window_edge.jpg">“Snell’s window edge.jpg”</a>, de Hellbus, Wikimedia Commons. Adaptação de cores sob <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p><p>Estátuas: imagem fornecida pelo titular. Autoria e licença a confirmar antes da publicação.</p><p>Gravuras da abertura, Projetos, Skills e Contato, além dos retratos pictóricos: artes originais geradas por IA; processo e referências em design/source/oil-scenes-prompts.md.</p><p>Música: “Color Your Night”, de Persona 3 Reload. Arquivo fornecido pelo titular, que declarou autorização de uso. Crédito detalhado e termos de distribuição pendentes.</p><p>Verso do baralho: recriação gerada por IA inspirada na referência de Persona, não um arquivo original do jogo. Frentes: composição e desenhos abstratos autorais; marcas das tecnologias via Devicon (MIT), com direitos de marca de seus respectivos titulares.</p><p>Tipografia: Archivo e Anton — SIL Open Font License.</p></footer>
       </div>}
     </div>
   </section>)}

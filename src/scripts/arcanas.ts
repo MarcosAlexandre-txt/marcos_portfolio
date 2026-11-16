@@ -30,6 +30,7 @@ export async function startArcanas() {
   }
   function select(index:number,animate=true) {
     active=index;showingBack=false;
+    menu!.dataset.mode=kind;
     buttons.forEach((button,i)=>{button.hidden=button.dataset.kind!==kind;button.setAttribute('aria-pressed',String(i===active));});
     details.forEach((detail,i)=>{detail.hidden=i!==active;});
     filters.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.skillFilter===kind)));
@@ -136,7 +137,7 @@ export async function startArcanas() {
   function draw(dt:number) {
     let lift=0;
     if(tween) {
-      tween.elapsed=Math.min(1,tween.elapsed+dt/.85);
+      tween.elapsed=Math.min(1,tween.elapsed+dt/1.2);
       const p=tween.elapsed;
       const ease=(1-Math.cos(Math.PI*p))/2;
       card.rotation.y=THREE.MathUtils.lerp(tween.from,tween.to,ease);
@@ -148,8 +149,8 @@ export async function startArcanas() {
       if(p===1) {card.rotation.y=showingBack?Math.PI:0;tween=null;stage!.dataset.turn='settled';transitionTexture=undefined;trimTextures();}
     }
     card.position.set(-lift*.23,lift*.13,lift*.7);
-    root.rotation.z=-.065;
-    root.rotation.y=THREE.MathUtils.damp(root.rotation.y,-.23+(still()?0:aim.x*.18),9,dt||1);
+    root.rotation.z=-.26;
+    root.rotation.y=THREE.MathUtils.damp(root.rotation.y,-.34+(still()?0:aim.x*.16),9,dt||1);
     root.rotation.x=THREE.MathUtils.damp(root.rotation.x,.06+(still()?0:aim.y*.09),7,dt||1);
     root.position.y=still()?0:Math.sin(time*.8)*.035;
     stack.forEach((mesh,i)=>{mesh.position.x=(i+1)*.045+lift*.015*i;});
