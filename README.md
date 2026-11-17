@@ -30,14 +30,4 @@ bun run preview
 
 O conteúdo principal permanece no HTML sem JavaScript. Os controles de música são opcionais; animações respeitam a preferência por movimento reduzido, e as cartas têm alternativa sem WebGL.
 
-## GitHub Pages
-
-O arquivo `.github/workflows/pages.yml` faz o build e a publicação **manual**. Ele define `ASTRO_SITE` e `ASTRO_BASE` conforme o nome do repositório, mantendo os caminhos compatíveis com GitHub Pages.
-
-1. Em **Settings → Pages**, selecione **GitHub Actions** como origem.
-2. Confirme os direitos de distribuição dos materiais indicados abaixo. Só então crie as variáveis de repositório `STATUE_LICENSE_CONFIRMED=true` e `MUSIC_DISTRIBUTION_CONFIRMED=true` em **Settings → Secrets and variables → Actions → Variables**.
-3. Em **Actions**, execute **Publicar portfólio no GitHub Pages** na branch `main`.
-
-Sem as duas variáveis com valor `true`, o workflow interrompe a publicação antes do build. A configuração local de `astro.config.mjs` usa `/` por padrão; o workflow ajusta o subdiretório do Pages.
-
 
