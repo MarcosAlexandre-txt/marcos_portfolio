@@ -10,7 +10,8 @@ export async function startArcanas() {
   const buttons=[...menu.querySelectorAll<HTMLButtonElement>('[data-skill-card]')];
   const details=[...menu.querySelectorAll<HTMLElement>('[data-skill-detail]')];
   const filters=[...menu.querySelectorAll<HTMLButtonElement>('[data-skill-filter]')];
-  const catalog=menu.querySelector<HTMLElement>('.arcana-catalog')!;
+  const groupNav=menu.querySelector<HTMLElement>('[data-skill-groups]')!;
+  const groupButtons=[...groupNav.querySelectorAll<HTMLButtonElement>('[data-skill-group]')];
   const position=menu.querySelector<HTMLElement>('[data-arcana-position]')!;
   const flip=menu.querySelector<HTMLButtonElement>('[data-card-flip]')!;
   const flipLabel=menu.querySelector<HTMLElement>('[data-flip-label]')!;
@@ -18,8 +19,8 @@ export async function startArcanas() {
   const status=stage.querySelector<HTMLElement>('[data-card-status]')!;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const still=()=>reduced.matches||document.documentElement.classList.contains('still');
-  let kind='hard', active=0, showingBack=false;
-  let visible=buttons.map((_,i)=>i).filter(i=>buttons[i].dataset.kind===kind);
+  let kind='hard', group=groupButtons[0].dataset.skillGroup!, active=0, showingBack=false;
+  let typeIndices=buttons.map((_,i)=>i).filter(i=>buttons[i].dataset.kind===kind);
   let updateScene: (action:DeckAction)=>void=()=>{};
   function updateFace() {
     fallback.src=showingBack?menu!.dataset.cardArt!:buttons[active].dataset.cardFront!;
@@ -29,40 +30,44 @@ export async function startArcanas() {
     status.textContent=`${showingBack?'Verso':'Frente'} da carta: ${details[active].querySelector('h3')!.textContent}.`;
   }
   function select(index:number,animate=true) {
-    active=index;showingBack=false;
+    active=index;kind=buttons[index].dataset.kind!;showingBack=false;
+    if(kind==='hard') group=buttons[index].dataset.group!;
+    typeIndices=buttons.map((_,i)=>i).filter(i=>buttons[i].dataset.kind===kind);
     menu!.dataset.mode=kind;
-    buttons.forEach((button,i)=>{button.hidden=button.dataset.kind!==kind;button.setAttribute('aria-pressed',String(i===active));});
+    menu!.dataset.group=group;
+    groupNav.hidden=kind==='soft';
+    groupButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.skillGroup===group)));
+    buttons.forEach((button,i)=>{button.hidden=button.dataset.kind!==kind||(kind==='hard'&&button.dataset.group!==group);button.setAttribute('aria-pressed',String(i===active));});
     details.forEach((detail,i)=>{detail.hidden=i!==active;});
     filters.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.skillFilter===kind)));
-    position.textContent=`${visible.indexOf(active)+1} de ${visible.length}`;
-    position.setAttribute('aria-label',`Competência ${visible.indexOf(active)+1} de ${visible.length}`);
+    position.textContent=`${typeIndices.indexOf(active)+1} de ${typeIndices.length}`;
+    position.setAttribute('aria-label',`Competência ${typeIndices.indexOf(active)+1} de ${typeIndices.length}`);
     if(animate&&!still()) {
       details[active].getAnimations().forEach(animation=>animation.cancel());
       details[active].animate([{translate:'-16px 0',opacity:.65},{translate:'0 0',opacity:1}],{duration:280,easing:'cubic-bezier(.16,1,.3,1)'});
     }
-    // Move only the horizontal catalog, not focus or the vertical page.
-    const button=buttons[active];
-    const left=button.offsetLeft-catalog.offsetLeft-(catalog.clientWidth-button.offsetWidth)/2;
-    catalog.scrollTo({left:Math.max(0,left),behavior:still()?'instant':'smooth'});
     updateFace();updateScene('select');
   }
-  function step(delta:number) {select(visible[(visible.indexOf(active)+delta+visible.length)%visible.length]);}
+  function step(delta:number) {select(typeIndices[(typeIndices.indexOf(active)+delta+typeIndices.length)%typeIndices.length]);}
   function flipCard() {showingBack=!showingBack;updateFace();updateScene('flip');}
   flip.addEventListener('click',flipCard);
   fallback.parentElement!.addEventListener('click',flipCard);
   buttons.forEach((button,i)=>button.addEventListener('click',()=>select(i)));
   filters.forEach(button=>button.addEventListener('click',()=>{
     kind=button.dataset.skillFilter!;
-    visible=buttons.map((_,i)=>i).filter(i=>buttons[i].dataset.kind===kind);
-    select(visible[0]);
+    select(buttons.findIndex(card=>card.dataset.kind===kind&&(kind==='soft'||card.dataset.group===group)));
+  }));
+  groupButtons.forEach(button=>button.addEventListener('click',()=>{
+    group=button.dataset.skillGroup!;
+    select(buttons.findIndex(card=>card.dataset.kind==='hard'&&card.dataset.group===group));
   }));
   menu.querySelector('[data-arcana-prev]')!.addEventListener('click',()=>step(-1));
   menu.querySelector('[data-arcana-next]')!.addEventListener('click',()=>step(1));
   menu.addEventListener('keydown',event=>{
     if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
     event.preventDefault();
-    if(event.key==='Home') select(visible[0]);
-    else if(event.key==='End') select(visible[visible.length-1]);
+    if(event.key==='Home') select(typeIndices[0]);
+    else if(event.key==='End') select(typeIndices[typeIndices.length-1]);
     else step(event.key==='ArrowLeft'?-1:1);
   });
   menu.classList.add('enhanced-deck');select(0,false);

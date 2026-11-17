@@ -18,9 +18,17 @@ Marcos em close pictórico sobre mar noturno, ponte costeira e luz coral. Sua fo
 
 Marcos à janela de um trem costeiro, com ponte, lua e fones. Pintura a óleo enérgica, iluminação azul e coral. A roupa foi editada para o uniforme de Gekkoukan associado a Makoto Yuki; o laço junto à gravata foi refinado para preto a pedido do titular. Rosto e pose continuam baseados em Marcos.
 
-## Formação — `formation-epic.png`
+## Formação — `formation-athens.png`
 
-Cena original de dois estudantes anônimos subindo uma escadaria de pedra rumo a uma esfera armilar sobre o mar noturno. Pinceladas de óleo em cobalto, violeta, turquesa e coral. A viagem alegórica em [*The Voyage of Life: Youth* (1842), de Thomas Cole](https://www.nga.gov/artworks/52451-voyage-life-youth), e o foco de luz da [gravura de William Pether após a cena do planetário de Joseph Wright](https://www.nga.gov/artworks/119599-philosopher-giving-lecture-orrery) inspiraram o conceito; nenhuma obra foi copiada ou incorporada. Substitui o retrato provisório de Marcos após revisão solicitada pelo titular em 2026-11-16. A versão antiga permanece apenas em `design/source/formation-candidate-01.png`.
+Reinterpretação pictórica original de uma academia clássica com arcos em perspectiva, filósofos em debate e grupos de estudo, em cobalto, turquesa e coral com pinceladas espessas. A [*Escola de Atenas* de Rafael, no acervo dos Museus Vaticanos](https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/stanze-di-raffaello/stanza-della-segnatura/scuola-di-atene.html), serviu como referência de tema e estrutura arquitetônica; a pintura original não foi incorporada ao site. Esta arte é exclusiva da Formação e não substitui o terceiro fundo do carrossel Sobre.
+
+## Terceiro fundo do Sobre — `about-third-horizon-pockets.png`
+
+Marcos de perfil parcial, em três quartos de costas, olhando o horizonte com as mãos nos bolsos do casaco. O retrato real `public/images/marcos-perfil.jpg` orientou cabelo e constituição; `about-epic.png` orientou uniforme e pinceladas. A esquerda rosa e a direita azul seguem a direção de cor aprovada pelo titular, sem copiar textos, personagens ou composição das capturas de referência. O titular aprovou esta versão para o terceiro quadro em 2026-11-16. A outra opção aprovada para comparação está em `design/candidates/about-third-portrait-pink.png`.
+
+## Terceiro fundo anterior do Sobre — `formation-epic.png`
+
+Cena original de dois estudantes anônimos subindo uma escadaria de pedra rumo a uma esfera armilar sobre o mar noturno. Pinceladas de óleo em cobalto, violeta, turquesa e coral. A viagem alegórica em [*The Voyage of Life: Youth* (1842), de Thomas Cole](https://www.nga.gov/artworks/52451-voyage-life-youth), e o foco de luz da [gravura de William Pether após a cena do planetário de Joseph Wright](https://www.nga.gov/artworks/119599-philosopher-giving-lecture-orrery) inspiraram o conceito; nenhuma obra foi copiada ou incorporada. O arquivo permanece arquivado no projeto.
 
 ## Skills — `skills-observatory.png`
 

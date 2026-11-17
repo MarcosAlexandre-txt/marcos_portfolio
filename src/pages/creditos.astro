@@ -1,0 +1,35 @@
+---
+import '@fontsource-variable/archivo/standard.css';
+import '@fontsource/anton/latin-400.css';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#030b35" />
+    <title>Créditos e licenças — Marcos Alexandre Bernardo</title>
+    <link rel="icon" type="image/svg+xml" href={`${base}brand-mark.svg`} />
+    <style>
+      :root{font-family:'Archivo Variable',sans-serif;color:#eef7ff;background:#030b35}*{box-sizing:border-box}body{margin:0;min-height:100svh;background:radial-gradient(circle at 90% 5%,#14437d 0%,transparent 45%),linear-gradient(135deg,#030b35,#0b1646 55%,#55143c)}main{width:min(100% - 40px,840px);margin:auto;padding:clamp(32px,6vw,80px) 0 100px}h1{font:400 clamp(3rem,9vw,6rem)/.95 Anton,sans-serif;text-transform:uppercase;margin:28px 0}h2{font-size:1.05rem;text-transform:uppercase;color:#81e4f5;margin:40px 0 10px}p{line-height:1.65;max-width:70ch}a{color:#9ae9fc;text-underline-offset:4px}a:hover,a:focus-visible{color:white}.back{display:inline-flex;min-height:44px;align-items:center;padding:8px 16px;background:#f32a59;color:#071426;text-decoration:none;font-weight:800;transform:skewX(-8deg)}.back:hover,.back:focus-visible{background:#fff;color:#071426}a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href={`${base}#contato`}>← Voltar ao contato</a>
+      <h1>Créditos e licenças</h1>
+      <p>Origem dos recursos visuais, sonoros e tipográficos do portfólio.</p>
+      <h2>Fotografia da água</h2>
+      <p><a href="https://commons.wikimedia.org/wiki/File:Snell%27s_window_edge.jpg">“Snell’s window edge.jpg”</a>, de Hellbus, Wikimedia Commons. Adaptação de cores sob <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
+      <h2>Estátuas e retrato</h2>
+      <p>Fotografia das estátuas fornecida pelo titular. Autoria e licença ainda precisam ser confirmadas antes da publicação pública. O retrato em Contato é o avatar do GitHub de Marcos Alexandre Bernardo, usado com sua autorização.</p>
+      <h2>Artes do site</h2>
+      <p>Gravuras da abertura, Projetos, Skills e Contato, além dos retratos pictóricos: artes originais geradas por IA. Processo e referências estão documentados em <code>design/source/oil-scenes-prompts.md</code> no projeto.</p>
+      <h2>Música</h2>
+      <p>“Color Your Night”, de Persona 3 Reload. Arquivo fornecido pelo titular, que declarou autorização de uso. Crédito detalhado e termos de distribuição ainda precisam de confirmação.</p>
+      <h2>Cartas e tipografia</h2>
+      <p>Verso do baralho: recriação gerada por IA inspirada na referência de Persona, sem utilizar um arquivo original do jogo. Frentes: composição e desenhos abstratos autorais; marcas das tecnologias via Devicon (MIT), com direitos de marca dos respectivos titulares. Tipografia: Archivo e Anton, sob SIL Open Font License.</p>
+    </main>
+  </body>
+</html>

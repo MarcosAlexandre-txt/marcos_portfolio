@@ -1,0 +1,25 @@
+---
+const { project } = Astro.props as { project: string };
+---
+<svg class="project-sigil" viewBox="0 0 160 160" fill="none" aria-hidden="true" focusable="false">
+  <circle class="sigil-orbit" cx="80" cy="80" r="65" />
+  <circle class="sigil-orbit sigil-orbit-inner" cx="80" cy="80" r="54" />
+  <path class="sigil-geometry" d="M80 8 152 80 80 152 8 80 80 8Zm0 18 54 54-54 54-54-54 54-54Z" />
+  <path class="sigil-ticks" d="M80 4v16m0 120v16M4 80h16m120 0h16M26 26l11 11m86 86 11 11M134 26l-11 11m-86 86-11 11" />
+  {project === 'altave' && <g class="sigil-icon" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 59h64v42H48zM48 72h64M60 59V48h40v11" />
+    <path d="M58 86h20m-20 7h14m15-8 7 7 13-17" />
+    <circle cx="48" cy="80" r="4" /><circle cx="112" cy="80" r="4" />
+    <path d="M80 48V35m0 66v24M48 80H35m77 0h13" />
+  </g>}
+  {project === 'we-logic' && <g class="sigil-icon" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m80 45 32 18v35l-32 18-32-18V63l32-18Z" />
+    <path d="m48 63 32 18 32-18M80 81v35m-15-62 31 18" />
+    <path d="M33 53c5-12 15-21 28-26m-8-5 9 5-5 9M127 107c-6 12-16 21-28 26m8 5-9-5 5-9" />
+  </g>}
+  {project === 'scrum-academy' && <g class="sigil-icon" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 64c-9-8-21-11-36-10v45c15-1 27 2 36 10 9-8 21-11 36-10V54c-15-1-27 2-36 10Zm0 0v45M53 68c7 0 13 2 19 5m-19 7c7 0 13 2 19 5m35-17c-7 0-13 2-19 5m19 7c-7 0-13 2-19 5" />
+    <circle cx="80" cy="34" r="4" /><circle cx="38" cy="117" r="4" /><circle cx="122" cy="117" r="4" />
+    <path d="M80 38v16m-38 58 10-13m66 13-10-13" />
+  </g>}
+</svg>

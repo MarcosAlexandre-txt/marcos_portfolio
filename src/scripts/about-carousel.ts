@@ -5,12 +5,14 @@ if (story) {
   const previous = story.querySelector<HTMLButtonElement>('[data-story-prev]')!;
   const next = story.querySelector<HTMLButtonElement>('[data-story-next]')!;
   const backdrops = [...document.querySelectorAll<HTMLElement>('.about-backdrops [data-story-backdrop]')];
+  const chapter = story.closest<HTMLElement>('.view-sobre');
   let current = 0;
 
   function show(index: number) {
     current = (index + slides.length) % slides.length;
     slides.forEach((slide, i) => { slide.hidden = i !== current; });
     backdrops.forEach((backdrop, i) => { backdrop.classList.toggle('is-active', i === current); });
+    if (chapter) chapter.dataset.storyIndex = String(current);
     position.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
   }
 
@@ -22,4 +24,5 @@ if (story) {
     show(current + (event.key === 'ArrowRight' ? 1 : -1));
   });
   story.classList.add('enhanced');
+  show(0);
 }

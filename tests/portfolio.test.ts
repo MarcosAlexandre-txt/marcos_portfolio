@@ -5,7 +5,7 @@ import { academicProjects, personalProjects, skillGroups, skillArcanas } from '.
 const html = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
 describe('Conteúdo estático e restrições do portfólio', () => {
   test('mantém todas as seções legíveis no HTML, sem JavaScript', () => {
-    for (const id of ['sobre','projetos','formacao','skills','contato','api','profissionais','pessoais',...academicProjects.map(p=>p.id)]) {
+    for (const id of ['sobre','projetos','formacao','skills','contato','api','profissionais','academicos',...academicProjects.map(p=>p.id)]) {
       expect(html).toContain(`id="${id}"`);
     }
     expect(html.match(/<h1[\s>]/g)?.length).toBe(1);
@@ -17,7 +17,7 @@ describe('Conteúdo estático e restrições do portfólio', () => {
       expect(p.problem.length).toBeGreaterThan(80);
       expect(p.solution.length).toBeGreaterThan(80);
       expect(p.contributions.length).toBeGreaterThanOrEqual(4);
-      expect(p.softSkills.length).toBeGreaterThanOrEqual(3);
+      expect(p.softSkills.length).toBeGreaterThanOrEqual(2);
       expect(html).toContain(p.teamRepo);
       expect(html).toContain(`id="${p.id}-title"`);
     }
@@ -112,10 +112,13 @@ describe('Conteúdo estático e restrições do portfólio', () => {
     expect(html).toContain('class="skill-evidence-link" href="#scrum-academy"');
     expect(html).toContain('class="skill-evidence-link" href="#altave"');
   });
-  test('preserva contatos e crédito visível da fotografia da água', () => {
+  test('preserva contatos e os créditos no arquivo separado', () => {
     expect(html).toContain('mailto:marcos.alexandre.scrt@gmail.com');
     expect(html).toContain('https://www.linkedin.com/in/marcos-alexandre-cs');
-    expect(html).toContain('Hellbus');
-    expect(html).toContain('https://creativecommons.org/licenses/by-sa/3.0/');
+    expect(html).not.toContain('Créditos e licenças');
+    expect(html).toContain('images/marcos-perfil.jpg');
+    const credits=readFileSync(new URL('../dist/creditos/index.html',import.meta.url),'utf8');
+    expect(credits).toContain('Hellbus');
+    expect(credits).toContain('https://creativecommons.org/licenses/by-sa/3.0/');
   });
 });

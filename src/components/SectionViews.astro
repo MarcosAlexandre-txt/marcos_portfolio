@@ -1,19 +1,22 @@
 ---
 import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import ProjectSigil from './ProjectSigil.astro';
 import { skillEvidenceLink } from '../data/evidence';
 import skillCard from '../../assets/plates/skill-card.png';
-import { academicProjects, personalProjects, skillArcanas, interests, semesters, currentSemester, certifications } from '../data/portfolio';
+import { academicProjects, personalProjects, skillGroups, skillArcanas, interests, semesters, currentSemester, certifications } from '../data/portfolio';
 import heroProfile from '../../assets/plates/hero-epic.png';
 import train from '../../assets/plates/about-epic.png';
-import classroom from '../../assets/plates/formation-epic.png';
+import aboutHorizon from '../../assets/plates/about-third-horizon-pockets.png';
+import formationAthens from '../../assets/plates/formation-athens.png';
 import skillsArt from '../../assets/plates/skills-observatory.png';
 import projectsArt from '../../assets/plates/projects-engraving.png';
 import contactArt from '../../assets/plates/contact-engraving.png';
-const [heroProfileView,trainView,classroomView,skillsArtView,projectsArtView,contactArtView] = await Promise.all([
+const [heroProfileView,trainView,aboutHorizonView,formationAthensView,skillsArtView,projectsArtView,contactArtView] = await Promise.all([
   getImage({src:heroProfile,format:'webp',quality:86}),
   getImage({src:train,format:'webp',quality:88}),
-  getImage({src:classroom,format:'webp',quality:88}),
+  getImage({src:aboutHorizon,format:'webp',quality:88}),
+  getImage({src:formationAthens,format:'webp',quality:88}),
   getImage({src:skillsArt,format:'webp',quality:85}),
   getImage({src:projectsArt,format:'webp',quality:82}),
   getImage({src:contactArt,format:'webp',quality:82}),
@@ -27,6 +30,7 @@ const cardThumbs = await Promise.all(skillArcanas.map((_,i)=>getImage({
   width:96,format:'webp',quality:84,
 })));
 const sections = [{id:'sobre',name:'Sobre'}, {id:'projetos',name:'Projetos'}, {id:'formacao',name:'Formação'}, {id:'skills',name:'Skills'}, {id:'contato',name:'Contato'}];
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const now = semesters.indexOf(currentSemester);
 const channels = [
   {name:'E-mail', value:'marcos.alexandre.scrt@gmail.com', href:'mailto:marcos.alexandre.scrt@gmail.com', external:false},
@@ -46,10 +50,10 @@ const channels = [
     {section.id==='sobre'&&<figure class="scene scene-environment train-environment about-backdrops" aria-hidden="true">
       <img class="is-active" data-story-backdrop="0" src={heroProfileView.src} width={heroProfileView.attributes.width} height={heroProfileView.attributes.height} alt="" />
       <img data-story-backdrop="1" src={trainView.src} width={trainView.attributes.width} height={trainView.attributes.height} alt="" loading="lazy" />
-      <img data-story-backdrop="2" src={classroomView.src} width={classroomView.attributes.width} height={classroomView.attributes.height} alt="" loading="lazy" />
+      <img data-story-backdrop="2" src={aboutHorizonView.src} width={aboutHorizonView.attributes.width} height={aboutHorizonView.attributes.height} alt="" loading="lazy" />
     </figure>}
     {section.id==='formacao'&&<figure class="scene scene-environment classroom-environment" aria-hidden="true">
-      <img src={classroomView.src} width={classroomView.attributes.width} height={classroomView.attributes.height} alt="" loading="lazy" />
+      <img src={formationAthensView.src} width={formationAthensView.attributes.width} height={formationAthensView.attributes.height} alt="" loading="lazy" />
     </figure>}
     <h2 class="view-word" id={`${section.id}-title`} tabindex="-1">{section.name}</h2>
     <div class="view-body">
@@ -64,7 +68,7 @@ const channels = [
               </li>
               <li class="about-story-slide" aria-label="2 de 3" hidden>
                 <span class="about-story-index">02 / Na prática</span><h3>Ideias ganham<br />forma quando<br />são testadas.</h3>
-                <p>Nas APIs da FATEC, trabalhei com empresas parceiras externas. Administrei cerimônias Scrum, organizei backlogs e entregas de valor para nossos clientes.</p>
+                <p>Nos projetos da FATEC, trabalhei com empresas parceiras externas. Administrei cerimônias Scrum, organizei backlogs e realizei entregas de valor para nossos clientes.</p>
                 <a class="go" href="#altave">Ver minhas contribuições</a>
               </li>
               <li class="about-story-slide" aria-label="3 de 3" hidden>
@@ -75,7 +79,7 @@ const channels = [
             </ol>
             <div class="about-story-controls"><button type="button" data-story-prev aria-label="Retrato anterior">←</button><span data-story-position aria-live="polite">01 / 03</span><button type="button" data-story-next aria-label="Próximo retrato">→</button></div>
           </section>
-        <div class="about-facts"><div class="about-facts-intro"><h3></h3><p>Estudo DSM desde agosto de 2025. Os projetos integradores da FATEC me deram prática com clientes parceiros, organização ágil do trabalho e desenvolvimento em equipe. Busco estágio para continuar esse caminho.</p></div><dl class="ficha">
+        <div class="about-facts"><dl class="ficha">
           <div><dt>Formação atual</dt><dd>Tecnólogo em Desenvolvimento de Software Multiplataforma<small>FATEC São José dos Campos – Prof. Jessen Vidal</small></dd></div>
           <div><dt>Período</dt><dd>Agosto de 2025 a dezembro de 2028</dd></div>
           <div><dt>Objetivo</dt><dd>Estágio, para levar a prática dos projetos a um contexto profissional</dd></div>
@@ -84,13 +88,13 @@ const channels = [
       </div>}
 
       {section.id==='projetos'&&<>
-        <nav class="project-tabs" aria-label="Tipos de projeto"><a href="#api" class="tab-link" data-tab="api">API</a><a href="#profissionais" class="tab-link" data-tab="profissionais">Profissionais</a><a href="#pessoais" class="tab-link" data-tab="pessoais">Pessoais</a></nav>
+        <nav class="project-tabs" aria-label="Tipos de projeto"><a href="#api" class="tab-link" data-tab="api">API</a><a href="#profissionais" class="tab-link" data-tab="profissionais">Profissionais</a><a href="#academicos" class="tab-link" data-tab="academicos">Acadêmicos</a></nav>
 
         <div class="project-panel api" id="api">
           <h3 class="sr-only">Projetos acadêmicos API</h3>
           <p class="api-explainer">API (Aprendizagem por Projetos Integradores): projetos semestrais da FATEC em que alunos desenvolvem soluções para problemas reais, inclusive de clientes externos, com práticas do Scrum.</p>
           <nav class="project-index" aria-label="Escolher projeto API">{academicProjects.map((project,i)=><a href={`#${project.id}`} style={`--card:${i}`} data-tilt>
-            <b aria-hidden="true">{project.numeral}</b><span>{project.term}<small>{project.partner}</small></span>
+            <b aria-hidden="true">{project.numeral}</b><ProjectSigil project={project.id} /><span>{project.term}<small>{project.partner}</small></span>
           </a>)}</nav>
           <div class="project-dossiers">{academicProjects.map(project=><article class="project-dossier" id={project.id} aria-labelledby={`${project.id}-title`}>
             <header class="dossier-head">
@@ -109,7 +113,6 @@ const channels = [
               <section><h4>Minhas contribuições</h4><ul class="marks">{project.contributions.map(contribution=><li>{contribution}</li>)}</ul></section>
               <section>
                 <h4>Tecnologias</h4><ul class="chips">{project.technologies.map(technology=><li>{technology}</li>)}</ul>
-                <h4>Hard skills</h4><p>{project.technologies.join(', ')}.</p>
                 <h4>Soft skills exercitadas</h4><ul class="chips">{project.softSkills.map(item=><li>{item}</li>)}</ul>
                 <h4>Repositório</h4>
                 <p><a class="go" href={project.teamRepo} target="_blank" rel="noopener noreferrer">Ver repositório do projeto<span class="sr-only"> (abre em nova aba)</span></a></p>
@@ -123,12 +126,12 @@ const channels = [
           <div class="statement-copy">
             <p>Ainda não tenho vínculo formal de estágio ou CLT. Minha vivência prática vem dos projetos de API para clientes parceiros reais e dos projetos técnicos com foco em rastreabilidade, controle de acesso e auditoria.</p>
             <p>Este espaço receberá as experiências profissionais conforme acontecerem.</p>
-            <p class="go-row"><a class="go" href="#api">Conhecer os projetos API</a><a class="go" href="#pessoais">Explorar os projetos técnicos</a></p>
+            <p class="go-row"><a class="go" href="#api">Conhecer os projetos API</a><a class="go" href="#academicos">Explorar os projetos acadêmicos</a></p>
           </div>
         </div>
 
-        <div class="project-panel" id="pessoais">
-          <h3 class="sr-only">Projetos pessoais e técnicos</h3>
+        <div class="project-panel" id="academicos">
+          <h3 class="sr-only">Outros projetos acadêmicos</h3>
           <ul class="quests">{personalProjects.map(project=><li><a href={`https://github.com/MarcosAlexandre-txt/${project.repo}`} target="_blank" rel="noopener noreferrer">
             <div class="quest-name"><h4>{project.name}</h4><p>{project.subtitle}</p></div>
             <div class="quest-detail"><p>{project.description}</p>{project.stack&&<ul class="chips">{project.stack.split(' · ').map(item=><li>{item}</li>)}</ul>}</div>
@@ -160,6 +163,9 @@ const channels = [
           <button type="button" data-skill-filter="hard" aria-pressed="true">Hard skills</button>
           <button type="button" data-skill-filter="soft" aria-pressed="false">Soft skills</button>
         </div>
+        <div class="skill-groups" data-skill-groups role="group" aria-label="Área de competência">
+          {skillGroups.map((group,i)=><button type="button" data-skill-group={group.name} aria-pressed={i===0?'true':'false'}>{group.name}<span>{String(group.skills.length).padStart(2,'0')}</span></button>)}
+        </div>
         <div class="skill-selection">
           <div class="skill-reading">
             <div class="skill-switcher">
@@ -188,19 +194,23 @@ const channels = [
             <span class="sr-only" role="status" data-card-status></span>
           </div>
         </div>
-        <div class="skill-catalog-header"><p>Escolha uma competência</p><p class="deck-hint">Navegue com <kbd>←</kbd> <kbd>→</kbd></p></div>
-        <div class="arcana-catalog" role="group" aria-label="Escolher competência">
-          {skillArcanas.map((item,i)=><button type="button" data-skill-card={i} data-kind={item.kind} data-card-front={cardFront(i)} aria-controls={`skill-${i}`} aria-pressed={i===0?'true':'false'}><img src={cardThumbs[i].src} width={cardThumbs[i].attributes.width} height={cardThumbs[i].attributes.height} alt="" loading="lazy" decoding="async" /><span>{item.name}</span></button>)}
+        <div class="deck-picker">
+          <div class="skill-catalog-header"><p>Escolha uma competência</p><p class="deck-hint">Navegue com <kbd>←</kbd> <kbd>→</kbd></p></div>
+          <div class="arcana-catalog" role="group" aria-label="Escolher competência">
+            {skillArcanas.map((item,i)=><button type="button" data-skill-card={i} data-kind={item.kind} data-group={item.group} data-card-front={cardFront(i)} aria-label={item.name} aria-controls={`skill-${i}`} aria-pressed={i===0?'true':'false'}><img src={cardThumbs[i].src} width={cardThumbs[i].attributes.width} height={cardThumbs[i].attributes.height} alt="" loading="lazy" decoding="async" /><span>{item.name}</span></button>)}
+          </div>
         </div>
       </div>}
 
       {section.id==='contato'&&<div class="contact">
-        <h3 class="contact-lead">Aberto a oportunidades de <span class="plate">estágio</span></h3>
-        <p class="contact-areas">Engenharia de Software, Análise de Dados, Segurança da Informação e DevOps.</p>
-        <ul class="channels">{channels.map((channel,i)=><li style={`--item:${i}`}><a href={channel.href} target={channel.external?'_blank':undefined} rel={channel.external?'noopener noreferrer':undefined}>
-          <span class="channel-name">{channel.name}</span><span class="channel-value">{channel.value}</span>{channel.external&&<span class="sr-only"> (abre em nova aba)</span>}
-        </a></li>)}</ul>
-        <footer class="credits"><h4>Créditos</h4><p>Água: <a href="https://commons.wikimedia.org/wiki/File:Snell%27s_window_edge.jpg">“Snell’s window edge.jpg”</a>, de Hellbus, Wikimedia Commons. Adaptação de cores sob <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p><p>Estátuas: imagem fornecida pelo titular. Autoria e licença a confirmar antes da publicação.</p><p>Gravuras da abertura, Projetos, Skills e Contato, além dos retratos pictóricos: artes originais geradas por IA; processo e referências em design/source/oil-scenes-prompts.md.</p><p>Música: “Color Your Night”, de Persona 3 Reload. Arquivo fornecido pelo titular, que declarou autorização de uso. Crédito detalhado e termos de distribuição pendentes.</p><p>Verso do baralho: recriação gerada por IA inspirada na referência de Persona, não um arquivo original do jogo. Frentes: composição e desenhos abstratos autorais; marcas das tecnologias via Devicon (MIT), com direitos de marca de seus respectivos titulares.</p><p>Tipografia: Archivo e Anton — SIL Open Font License.</p></footer>
+        <div class="contact-copy">
+          <h3 class="contact-lead">Aberto a oportunidades de <span class="plate">estágio</span></h3>
+          <p class="contact-areas">Engenharia de Software, Análise de Dados, Segurança da Informação e DevOps.</p>
+          <ul class="channels">{channels.map((channel,i)=><li style={`--item:${i}`}><a href={channel.href} target={channel.external?'_blank':undefined} rel={channel.external?'noopener noreferrer':undefined}>
+            <span class="channel-name">{channel.name}</span><span class="channel-value">{channel.value}</span>{channel.external&&<span class="sr-only"> (abre em nova aba)</span>}
+          </a></li>)}</ul>
+        </div>
+        <figure class="contact-portrait"><img src={`${base}images/marcos-perfil.jpg`} width="460" height="460" alt="Retrato de Marcos Alexandre Bernardo" loading="lazy" /></figure>
       </div>}
     </div>
   </section>)}

@@ -77,8 +77,8 @@ export const softSkills = [
 ];
 // Individual illustrated fronts + one shared back; art never assigns proficiency scores or tarot categories.
 export const skillArcanas = [
-  ...skillGroups.flatMap(group=>group.skills.map(item=>({ ...item, kind:'hard' as const, detail:'' }))),
-  ...softSkills.map(item=>({ ...item, evidence:[] as string[], level:null, kind:'soft' as const })),
+  ...skillGroups.flatMap(group=>group.skills.map(item=>({ ...item, kind:'hard' as const, detail:'', group:group.name }))),
+  ...softSkills.map(item=>({ ...item, evidence:[] as string[], level:null, kind:'soft' as const, group:'' })),
 ];
 export const interests = ['Engenharia de Software', 'Análise de Dados', 'Segurança da Informação: GRC, IAM e DLP', 'DevOps e Linux'];
 /* one mark per semester of the course, from the first (2025-2) to the last (2028-2) */

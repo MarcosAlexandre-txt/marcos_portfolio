@@ -2,7 +2,7 @@ export {};
 
 const sectionIds = ['sobre','projetos','formacao','skills','contato'];
 const projectIds = ['altave','we-logic','scrum-academy'];
-const tabIds = ['api','profissionais','pessoais'];
+const tabIds = ['api','profissionais','academicos'];
 const home = document.querySelector<HTMLElement>('.home')!;
 const sections = [...document.querySelectorAll<HTMLElement>('.section-view')];
 const panels = [...document.querySelectorAll<HTMLElement>('.project-panel')];

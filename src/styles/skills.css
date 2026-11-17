@@ -11,6 +11,13 @@
 .skill-console .arcana-filters button::before{border:0;transform:none;background:transparent}
 .skill-console .arcana-filters button[aria-pressed=true]{color:#07132f}
 .skill-console .arcana-filters button[aria-pressed=true]::before{background:#fff}
+.skill-groups{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px;padding:0;max-width:100%}
+.skill-groups[hidden]{display:none}
+.skill-groups button{display:flex;align-items:center;gap:9px;min-height:42px;padding:7px 12px;border:1px solid #8ae8f775;background:#061945d9;color:#c8f2ff;font:800 .76rem/1.15 'Archivo Variable',sans-serif;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;transform:skewX(-7deg);transition:background .2s,translate .2s}
+.skill-groups button span{color:#8ce6f4;font-size:.7rem;opacity:.85}
+.skill-groups button:hover{background:#125491;translate:0 -3px}
+.skill-groups button[aria-pressed=true]{background:#e9fbff;color:#06132e;border-color:#fff;box-shadow:4px 4px 0 #ed3d79}
+.skill-groups button[aria-pressed=true] span{color:#184c7a}
 .skill-selection{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);min-height:clamp(460px,55vh,620px);align-items:center;position:relative;margin-top:-6px}
 .skill-reading{position:relative;z-index:2;align-self:center;min-width:0;padding:10px 0 30px}
 .skill-switcher{display:flex;align-items:center;gap:16px;margin:0 0 15px;padding-left:10px;width:fit-content;color:#e4faff}
@@ -49,21 +56,32 @@
 .skill-console .arcana-fallback{width:55%;max-width:330px;top:50%;aspect-ratio:848/1264;transform:translate(-50%,-50%) rotate(-5deg)}
 .skill-console .arcana-fallback img{width:100%;height:auto;filter:drop-shadow(14px 20px 20px #00144345)}
 .enhanced-deck .arcana-fallback{cursor:pointer}
-.skill-catalog-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:14px 18px 4px;background:#031246;color:#fff}
+.deck-picker{position:relative;z-index:3;width:min(47%,680px);margin:-8px 0 20px auto;padding:10px 12px 18px;border:1px solid #84e7f154;background:#020e29e8;box-shadow:10px 10px 0 #061d54}
+.deck-picker::before{content:'';position:absolute;left:-14px;top:-12px;width:80px;height:3px;background:#ef467e;transform:rotate(-7deg)}
+.skill-catalog-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:6px 7px 14px;background:transparent;color:#fff}
 .skill-catalog-header>p:first-child{margin:0;font-size:.83rem;font-weight:700}
 .skill-console .deck-hint{margin:0!important;color:#a1dfff;font-size:.76rem}
 .skill-console .deck-hint kbd{background:none;padding:0 2px;color:#fff;font-weight:700}
-.skill-console .arcana-catalog{position:relative;display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:12px 18px 18px;border:0;background:#031246;scrollbar-width:thin;scrollbar-color:#73e5ff #052369;scroll-padding-inline:18px}
-.skill-console .arcana-catalog button{flex:0 0 155px;display:flex;align-items:center;gap:12px;min-height:76px;padding:9px 10px;border:0;background:#103573;color:#d8f4ff;font:700 .83rem/1.25 'Archivo Variable',sans-serif;text-align:left;cursor:pointer;transition:background .18s,color .18s}
-.skill-console .arcana-catalog button img{flex:0 0 32px;width:32px;height:48px;object-fit:contain}
-.skill-console .arcana-catalog button span{color:inherit;font-size:inherit;overflow-wrap:anywhere}
-.skill-console .arcana-catalog button:hover{background:#1a55a0;color:#fff}
-.skill-console .arcana-catalog button[aria-pressed=true]{background:#fff;color:#06112d}
+.skill-console .arcana-catalog{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px 7px;overflow:visible;max-width:100%;padding:5px 8px 8px;border:0;background:transparent}
+.skill-console .arcana-catalog button{--fan:-4deg;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:0;min-height:126px;padding:7px 3px;border:1px solid #73b8d566;background:#103573de;color:#e4faff;font:800 .72rem/1.15 'Archivo Variable',sans-serif;text-align:center;cursor:pointer;transform:rotate(var(--fan));transform-origin:50% 100%;transition:transform .26s,background .18s,color .18s,box-shadow .18s}
+.skill-console .arcana-catalog button:nth-child(4n + 2){--fan:-1.5deg}
+.skill-console .arcana-catalog button:nth-child(4n + 3){--fan:1.5deg}
+.skill-console .arcana-catalog button:nth-child(4n){--fan:4deg}
+.skill-console .arcana-catalog button[hidden]{display:none}
+.skill-console .arcana-catalog button img{display:block;flex:none;width:auto;height:78px;max-width:68%;object-fit:contain;filter:drop-shadow(3px 5px 3px #0007)}
+.skill-console .arcana-catalog button span{display:-webkit-box;max-width:100%;min-height:2.3em;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical;color:inherit;overflow-wrap:anywhere}
+.skill-console .arcana-catalog button:hover{background:#1a55a0;color:#fff;transform:translateY(-7px) rotate(0)}
+.skill-console .arcana-catalog button[aria-pressed=true]{background:#e9faff;color:#06112d;transform:translateY(-10px) rotate(0);box-shadow:4px 6px 0 #ef467e}
+.skill-console[data-mode=soft] .arcana-catalog{grid-template-columns:repeat(4,minmax(0,1fr))}
+.skill-console:not(.enhanced-deck) .deck-picker{width:100%;margin:0}
 .skill-console button:focus-visible{outline:3px solid #ffb5db;outline-offset:3px}
 .skill-console:not(.enhanced-deck) .skill-switcher{display:none}
 
 @media(min-width:1700px){.skill-selection{min-height:610px}.skill-console .arcana-stage{height:610px}}
 @media(max-width:1050px) and (min-width:701px){
+  .deck-picker{width:48%}
+  .skill-console .arcana-catalog{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .skill-console[data-mode=soft] .arcana-catalog{grid-template-columns:repeat(2,minmax(0,1fr))}
   .skill-selection{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);min-height:450px}
   .skill-console .arcana-detail h3{font-size:clamp(2.1rem,4vw,3.3rem);padding:18px 25px}
   .skill-detail-copy{padding:20px 25px 24px 20px;width:100%}
@@ -82,8 +100,7 @@
   .skill-console .arcana-description{font-size:1rem}
   .skill-switcher{margin-bottom:12px}
   .skill-catalog-header{padding-top:10px}
-  .skill-console .arcana-catalog{padding-top:8px;padding-bottom:14px}
-  .skill-console .arcana-catalog button{min-height:70px}
+  .skill-console .arcana-catalog button{min-height:116px}
 }
 @media(max-width:700px){
   .view-skills{--pad:24px;padding-bottom:24px}
@@ -92,6 +109,9 @@
   .view-skills::after{clip-path:polygon(100% 5%,100% 100%,55% 100%)}
   .skill-console .arcana-filters{padding:3px 6px;margin-left:4px}
   .skill-console .arcana-filters button{font-size:.9rem;padding:8px 16px}
+  .skill-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0 4px}
+  .skill-groups button{justify-content:space-between;padding:8px 10px;font-size:.7rem;letter-spacing:0}
+  .skill-groups button:last-child:nth-child(odd){grid-column:1/-1}
   .skill-selection{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:'switcher' 'title' 'art' 'copy';gap:0;min-height:0;margin-top:20px}
   .skill-reading,.skill-console .arcana-details,.skill-console .arcana-detail{display:contents}
   .skill-switcher{grid-area:switcher;margin:0 0 14px;padding-left:0;gap:14px}
@@ -103,15 +123,17 @@
   .skill-detail-copy{grid-area:copy;width:100%;padding:24px 24px 28px;min-height:0;margin-bottom:24px}
   .skill-console .arcana-description{font-size:1rem;max-width:none}
   .skill-console .arcana-detail .go{font-size:.9rem}
-  .skill-catalog-header{display:block;padding:14px 14px 2px}
+  .deck-picker{width:100%;margin:12px 0 24px;padding:12px 12px 18px}
+  .skill-catalog-header{display:block;padding:6px 8px 12px}
   .skill-console .deck-hint{margin-top:6px!important;font-size:.72rem}
-  .skill-console .arcana-catalog{padding:12px 14px 16px;gap:8px}
-  .skill-console .arcana-catalog button{flex-basis:150px;font-size:.8rem;min-height:76px}
+  .skill-console .arcana-catalog,.skill-console[data-mode=soft] .arcana-catalog{grid-template-columns:repeat(2,minmax(0,1fr));padding:4px 7px 9px;gap:12px 10px}
+  .skill-console .arcana-catalog button{font-size:.8rem;min-height:138px}
+  .skill-console .arcana-catalog button img{height:88px}
   .skill-console:not(.enhanced-deck) .skill-selection{display:block}
   .skill-console:not(.enhanced-deck) .arcana-detail{display:block}
 }
 @media print{
-  .view-skills::before,.view-skills::after,.skill-switcher,.skill-console .arcana-stage,.skill-console .arcana-catalog,.skill-catalog-header,.skill-console .arcana-filters{display:none!important}
+  .view-skills::before,.view-skills::after,.skill-switcher,.skill-console .arcana-stage,.deck-picker,.skill-groups,.skill-console .arcana-filters{display:none!important}
   .skill-selection,.skill-reading,.skill-console .arcana-details,.skill-console .arcana-detail{display:block!important}
   .skill-console .arcana-detail{margin-bottom:24px!important}
   .skill-console .arcana-detail h3{font-size:24px;transform:none;width:auto;margin:0;padding:0}
